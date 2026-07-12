@@ -187,4 +187,70 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get games => 'GAMES';
+
+  @override
+  String get selectVersion => 'SELECT VERSION';
+
+  @override
+  String get selectAsset => 'SELECT ASSET';
+
+  @override
+  String get selectAssetFirst => 'SELECT ASSET FIRST';
+
+  @override
+  String get security => 'SECURITY';
+
+  @override
+  String get changelog => 'CHANGELOG';
+
+  @override
+  String get readme => 'README';
+
+  @override
+  String get markdown => 'MARKDOWN';
+
+  @override
+  String get owner => 'OWNER';
+
+  @override
+  String get languageLabel => 'LANGUAGE';
+
+  @override
+  String get noReadmeAvailable => 'NO README AVAILABLE';
+
+  @override
+  String get failedToLoadReadme => 'FAILED TO LOAD README';
+
+  @override
+  String get noReleaseNotes => 'NO RELEASE NOTES';
+
+  @override
+  String get noMatchingIssues => 'NO MATCHING ISSUES';
+
+  @override
+  String get noOpenIssues => 'NO OPEN ISSUES';
+
+  @override
+  String get noClosedIssues => 'NO CLOSED ISSUES';
+
+  @override
+  String get open => 'OPEN';
+
+  @override
+  String get closed => 'CLOSED';
+
+  @override
+  String get comments => 'COMMENTS';
+
+  @override
+  String get noCommentsYet => 'NO COMMENTS YET';
+
+  @override
+  String get installLatest => 'INSTALL LATEST';
+
+  @override
+  String get showLess => 'SHOW LESS';
+
+  @override
+  String get readMoreBtn => 'READ MORE';
 }

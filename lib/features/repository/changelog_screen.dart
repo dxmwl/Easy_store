@@ -30,7 +30,7 @@ class ChangelogScreen extends StatelessWidget {
                     _buildVersionHeader(),
                     const SizedBox(height: 16),
                     // 更新日志内容
-                    _buildContent(),
+                    _buildContent(l10n),
                   ],
                 ),
               ),
@@ -66,10 +66,10 @@ class ChangelogScreen extends StatelessWidget {
           const SizedBox(width: 12),
           const Icon(Icons.description, size: 24),
           const SizedBox(width: 8),
-          const Expanded(
+          Expanded(
             child: Text(
-              'CHANGELOG',
-              style: TextStyle(
+              l10n.changelog.toUpperCase(),
+              style: const TextStyle(
                 fontFamily: 'Arial Black',
                 fontSize: 18,
                 fontWeight: FontWeight.w900,
@@ -142,14 +142,14 @@ class ChangelogScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildContent() {
+  Widget _buildContent(AppLocalizations l10n) {
     if (release.body == null || release.body!.isEmpty) {
       return MangaContainer(
         padding: const EdgeInsets.all(24),
         child: Center(
           child: Text(
-            'NO RELEASE NOTES',
-            style: TextStyle(
+            l10n.noReleaseNotes.toUpperCase(),
+            style: const TextStyle(
               fontFamily: 'Arial Black',
               fontSize: 14,
               color: BrutalTheme.disabled,

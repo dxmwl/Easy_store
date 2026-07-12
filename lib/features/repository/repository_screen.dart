@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../l10n/app_localizations.dart';
 import '../../config/brutal_theme.dart';
@@ -195,9 +196,9 @@ class _RepositoryScreenState extends ConsumerState<RepositoryScreen> {
               children: [
                 _buildVersionTabs(l10n),
                 const SizedBox(height: 16),
-                const Text(
-                  'NO RELEASES AVAILABLE',
-                  style: TextStyle(
+                Text(
+                  l10n.noReleases.toUpperCase(),
+                  style: const TextStyle(
                     fontFamily: 'Arial Black',
                     fontSize: 12,
                     color: BrutalTheme.disabled,
@@ -232,7 +233,7 @@ class _RepositoryScreenState extends ConsumerState<RepositoryScreen> {
                 ],
               ),
               const SizedBox(height: 16),
-              _buildDownloadButton(),
+              _buildDownloadButton(l10n),
             ],
           );
         },
@@ -397,6 +398,7 @@ class _RepositoryScreenState extends ConsumerState<RepositoryScreen> {
   }
 
   void _showVersionMenu(List<Release> releases) {
+    final l10n = AppLocalizations.of(context)!;
     showModalBottomSheet(
       context: context,
       backgroundColor: Colors.transparent,
@@ -426,13 +428,13 @@ class _RepositoryScreenState extends ConsumerState<RepositoryScreen> {
                     bottom: BorderSide(color: Colors.black, width: 2),
                   ),
                 ),
-                child: const Row(
+                child: Row(
                   children: [
-                    Icon(Icons.tag, size: 20),
-                    SizedBox(width: 8),
+                    const Icon(Icons.tag, size: 20),
+                    const SizedBox(width: 8),
                     Text(
-                      'SELECT VERSION',
-                      style: TextStyle(
+                      l10n.selectVersion.toUpperCase(),
+                      style: const TextStyle(
                         fontFamily: 'Arial Black',
                         fontSize: 14,
                         fontWeight: FontWeight.w900,
@@ -531,6 +533,7 @@ class _RepositoryScreenState extends ConsumerState<RepositoryScreen> {
   void _showAssetMenu(List<ReleaseAsset> assets) {
     if (assets.isEmpty) return;
 
+    final l10n = AppLocalizations.of(context)!;
     showModalBottomSheet(
       context: context,
       backgroundColor: Colors.transparent,
@@ -560,13 +563,13 @@ class _RepositoryScreenState extends ConsumerState<RepositoryScreen> {
                     bottom: BorderSide(color: Colors.black, width: 2),
                   ),
                 ),
-                child: const Row(
+                child: Row(
                   children: [
-                    Icon(Icons.file_download, size: 20),
-                    SizedBox(width: 8),
+                    const Icon(Icons.file_download, size: 20),
+                    const SizedBox(width: 8),
                     Text(
-                      'SELECT ASSET',
-                      style: TextStyle(
+                      l10n.selectAsset.toUpperCase(),
+                      style: const TextStyle(
                         fontFamily: 'Arial Black',
                         fontSize: 14,
                         fontWeight: FontWeight.w900,
@@ -645,7 +648,7 @@ class _RepositoryScreenState extends ConsumerState<RepositoryScreen> {
     );
   }
 
-  Widget _buildDownloadButton() {
+  Widget _buildDownloadButton(AppLocalizations l10n) {
     final hasAsset = _selectedAsset != null;
     
     return GestureDetector(
@@ -672,7 +675,7 @@ class _RepositoryScreenState extends ConsumerState<RepositoryScreen> {
             const Icon(Icons.download, size: 20, color: BrutalTheme.white),
             const SizedBox(width: 8),
             Text(
-              hasAsset ? 'INSTALL ${_selectedAsset!.name}' : 'SELECT ASSET FIRST',
+              hasAsset ? '${l10n.installLatest.toUpperCase()} ${_selectedAsset!.name}' : l10n.selectAssetFirst.toUpperCase(),
               style: const TextStyle(
                 fontFamily: 'Arial Black',
                 fontSize: 12,
@@ -700,7 +703,7 @@ class _RepositoryScreenState extends ConsumerState<RepositoryScreen> {
     return Row(
       children: [
         Expanded(child: _buildFeatureButton(
-          'ISSUES',
+          l10n.issues.toUpperCase(),
           Icons.bug_report,
           () {
             Navigator.of(context).push(
@@ -714,7 +717,7 @@ class _RepositoryScreenState extends ConsumerState<RepositoryScreen> {
           },
         )),
         const SizedBox(width: 8),
-        Expanded(child: _buildFeatureButton('SECURITY', Icons.security, () {})),
+        Expanded(child: _buildFeatureButton(l10n.security.toUpperCase(), Icons.security, () {})),
       ],
     );
   }
@@ -762,9 +765,9 @@ class _RepositoryScreenState extends ConsumerState<RepositoryScreen> {
         children: [
           Row(
             children: [
-              const Text(
-                'CHANGELOG',
-                style: TextStyle(
+              Text(
+                l10n.changelog.toUpperCase(),
+                style: const TextStyle(
                   fontFamily: 'Arial Black',
                   fontSize: 16,
                   fontWeight: FontWeight.w900,
@@ -857,15 +860,17 @@ class _RepositoryScreenState extends ConsumerState<RepositoryScreen> {
   }
 
   Widget _buildReadme(Repository repo, AppLocalizations l10n) {
+    final readmeAsync = ref.watch(readmeProvider((owner: widget.owner, repo: widget.repo)));
+    
     return MangaContainer(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             children: [
-              const Text(
-                'ABOUT',
-                style: TextStyle(
+              Text(
+                l10n.readme.toUpperCase(),
+                style: const TextStyle(
                   fontFamily: 'Arial Black',
                   fontSize: 16,
                   fontWeight: FontWeight.w900,
@@ -879,9 +884,9 @@ class _RepositoryScreenState extends ConsumerState<RepositoryScreen> {
                   color: BrutalTheme.ink,
                   border: Border.all(color: Colors.black, width: 1.5),
                 ),
-                child: const Text(
-                  'en',
-                  style: TextStyle(
+                child: Text(
+                  l10n.markdown.toUpperCase(),
+                  style: const TextStyle(
                     fontFamily: 'Arial Black',
                     fontSize: 10,
                     fontWeight: FontWeight.w900,
@@ -891,22 +896,137 @@ class _RepositoryScreenState extends ConsumerState<RepositoryScreen> {
               ),
             ],
           ),
-          const SizedBox(height: 12),
-          if (repo.description != null)
-            Text(
-              repo.description!,
-              style: const TextStyle(
-                fontFamily: 'Courier New',
-                fontSize: 14,
-                color: BrutalTheme.ink,
-                height: 1.5,
-              ),
-            ),
           const SizedBox(height: 16),
-          _buildInfoRow('OWNER', repo.owner.login),
-          _buildInfoRow('LANGUAGE', repo.language ?? '-'),
+          // 仓库基本信息
+          _buildInfoRow(l10n.owner.toUpperCase(), repo.owner.login),
+          _buildInfoRow(l10n.languageLabel.toUpperCase(), repo.language ?? '-'),
           _buildInfoRow('STARS', repo.stargazersCount != null ? '${repo.stargazersCount}' : '-'),
           _buildInfoRow('FORKS', repo.forksCount != null ? '${repo.forksCount}' : '-'),
+          const SizedBox(height: 16),
+          // README 内容
+          readmeAsync.when(
+            data: (readme) {
+              if (readme.isEmpty) {
+                return Container(
+                  padding: const EdgeInsets.all(24),
+                  decoration: BoxDecoration(
+                    color: BrutalTheme.surface,
+                    border: Border.all(color: BrutalTheme.ink, width: 2),
+                  ),
+                  child: Center(
+                    child: Text(
+                      l10n.noReadmeAvailable.toUpperCase(),
+                      style: TextStyle(
+                        fontFamily: 'Arial Black',
+                        fontSize: 12,
+                        color: BrutalTheme.disabled,
+                      ),
+                    ),
+                  ),
+                );
+              }
+              return Container(
+                width: double.infinity,
+                padding: const EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: BrutalTheme.white,
+                  border: Border.all(color: BrutalTheme.ink, width: 2),
+                ),
+                child: MarkdownBody(
+                  data: readme,
+                  selectable: true,
+                  styleSheet: MarkdownStyleSheet(
+                    p: const TextStyle(
+                      fontFamily: 'Courier New',
+                      fontSize: 14,
+                      color: BrutalTheme.ink,
+                      height: 1.6,
+                    ),
+                    h1: const TextStyle(
+                      fontFamily: 'Arial Black',
+                      fontSize: 24,
+                      fontWeight: FontWeight.w900,
+                      color: BrutalTheme.ink,
+                    ),
+                    h2: const TextStyle(
+                      fontFamily: 'Arial Black',
+                      fontSize: 20,
+                      fontWeight: FontWeight.w900,
+                      color: BrutalTheme.ink,
+                    ),
+                    h3: const TextStyle(
+                      fontFamily: 'Arial Black',
+                      fontSize: 16,
+                      fontWeight: FontWeight.w900,
+                      color: BrutalTheme.ink,
+                    ),
+                    code: const TextStyle(
+                      fontFamily: 'Courier New',
+                      fontSize: 12,
+                      color: BrutalTheme.ink,
+                      backgroundColor: BrutalTheme.surface,
+                    ),
+                    codeblockDecoration: BoxDecoration(
+                      color: BrutalTheme.surface,
+                      border: Border.all(color: BrutalTheme.ink, width: 1),
+                    ),
+                    a: const TextStyle(
+                      fontFamily: 'Courier New',
+                      fontSize: 14,
+                      color: BrutalTheme.primary,
+                      fontWeight: FontWeight.w700,
+                      decoration: TextDecoration.underline,
+                    ),
+                    blockquote: const TextStyle(
+                      fontFamily: 'Courier New',
+                      fontSize: 14,
+                      color: BrutalTheme.disabled,
+                      fontStyle: FontStyle.italic,
+                    ),
+                    blockquoteDecoration: BoxDecoration(
+                      border: Border(
+                        left: BorderSide(color: BrutalTheme.ink, width: 4),
+                      ),
+                    ),
+                    tableHead: const TextStyle(
+                      fontFamily: 'Arial Black',
+                      fontSize: 12,
+                      fontWeight: FontWeight.w900,
+                      color: BrutalTheme.ink,
+                    ),
+                    tableBody: const TextStyle(
+                      fontFamily: 'Courier New',
+                      fontSize: 12,
+                      color: BrutalTheme.ink,
+                    ),
+                  ),
+                ),
+              );
+            },
+            loading: () => const Center(
+              child: Padding(
+                padding: EdgeInsets.all(24),
+                child: CircularProgressIndicator(color: BrutalTheme.ink),
+              ),
+            ),
+            error: (error, stack) => Container(
+              padding: const EdgeInsets.all(24),
+              decoration: BoxDecoration(
+                color: BrutalTheme.surface,
+                border: Border.all(color: BrutalTheme.primary, width: 2),
+              ),
+              child: Center(
+                child: Text(
+                  l10n.failedToLoadReadme.toUpperCase(),
+                  style: TextStyle(
+                    fontFamily: 'Arial Black',
+                    fontSize: 12,
+                    color: BrutalTheme.primary,
+                  ),
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );

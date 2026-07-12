@@ -186,4 +186,70 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get games => 'ゲーム';
+
+  @override
+  String get selectVersion => 'バージョンを選択';
+
+  @override
+  String get selectAsset => 'アセットを選択';
+
+  @override
+  String get selectAssetFirst => 'アセットを選択してください';
+
+  @override
+  String get security => 'セキュリティ';
+
+  @override
+  String get changelog => '変更履歴';
+
+  @override
+  String get readme => 'README';
+
+  @override
+  String get markdown => 'Markdown';
+
+  @override
+  String get owner => 'オーナー';
+
+  @override
+  String get languageLabel => '言語';
+
+  @override
+  String get noReadmeAvailable => 'READMEなし';
+
+  @override
+  String get failedToLoadReadme => 'READMEの読み込み失敗';
+
+  @override
+  String get noReleaseNotes => 'リリースノートなし';
+
+  @override
+  String get noMatchingIssues => '一致するイシューなし';
+
+  @override
+  String get noOpenIssues => 'オープンイシューなし';
+
+  @override
+  String get noClosedIssues => 'クローズドイシューなし';
+
+  @override
+  String get open => 'オープン';
+
+  @override
+  String get closed => 'クローズド';
+
+  @override
+  String get comments => 'コメント';
+
+  @override
+  String get noCommentsYet => 'コメントなし';
+
+  @override
+  String get installLatest => '最新版をインストール';
+
+  @override
+  String get showLess => '閉じる';
+
+  @override
+  String get readMoreBtn => '続きを読む';
 }

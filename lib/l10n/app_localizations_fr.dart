@@ -188,4 +188,70 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get games => 'JEUX';
+
+  @override
+  String get selectVersion => 'SÉLECTIONNER LA VERSION';
+
+  @override
+  String get selectAsset => 'SÉLECTIONNER L\'ASSET';
+
+  @override
+  String get selectAssetFirst => 'SÉLECTIONNER UN ASSET D\'ABORD';
+
+  @override
+  String get security => 'SÉCURITÉ';
+
+  @override
+  String get changelog => 'JOURNAL DES MODIFICATIONS';
+
+  @override
+  String get readme => 'README';
+
+  @override
+  String get markdown => 'Markdown';
+
+  @override
+  String get owner => 'PROPRIÉTAIRE';
+
+  @override
+  String get languageLabel => 'LANGUE';
+
+  @override
+  String get noReadmeAvailable => 'PAS DE README';
+
+  @override
+  String get failedToLoadReadme => 'ÉCHEC DU CHARGEMENT DU README';
+
+  @override
+  String get noReleaseNotes => 'PAS DE NOTES DE VERSION';
+
+  @override
+  String get noMatchingIssues => 'AUCUN TICKET CORRESPONDANT';
+
+  @override
+  String get noOpenIssues => 'AUCUN TICKET OUVERT';
+
+  @override
+  String get noClosedIssues => 'AUCUN TICKET FERMÉ';
+
+  @override
+  String get open => 'OUVERT';
+
+  @override
+  String get closed => 'FERMÉ';
+
+  @override
+  String get comments => 'COMMENTAIRES';
+
+  @override
+  String get noCommentsYet => 'PENCORE DE COMMENTAIRES';
+
+  @override
+  String get installLatest => 'INSTALLER LA DERNIÈRE VERSION';
+
+  @override
+  String get showLess => 'MOINS';
+
+  @override
+  String get readMoreBtn => 'EN SAVOIR PLUS';
 }

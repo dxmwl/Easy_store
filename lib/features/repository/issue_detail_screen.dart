@@ -57,7 +57,7 @@ class IssueDetailScreen extends ConsumerWidget {
                     _buildContent(),
                     const SizedBox(height: 24),
                     // 评论/回复列表
-                    _buildCommentsSection(commentsAsync),
+                    _buildCommentsSection(commentsAsync, l10n),
                   ],
                 ),
               ),
@@ -279,16 +279,16 @@ class IssueDetailScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildCommentsSection(AsyncValue<List<GithubComment>> commentsAsync) {
+  Widget _buildCommentsSection(AsyncValue<List<GithubComment>> commentsAsync, AppLocalizations l10n) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         // 标题
         Row(
           children: [
-            const Text(
-              'COMMENTS',
-              style: TextStyle(
+            Text(
+              l10n.comments.toUpperCase(),
+              style: const TextStyle(
                 fontFamily: 'Arial Black',
                 fontSize: 16,
                 fontWeight: FontWeight.w900,
@@ -324,7 +324,7 @@ class IssueDetailScreen extends ConsumerWidget {
                 padding: const EdgeInsets.all(24),
                 child: Center(
                   child: Text(
-                    'NO COMMENTS YET',
+                    l10n.noCommentsYet.toUpperCase(),
                     style: TextStyle(
                       fontFamily: 'Arial Black',
                       fontSize: 12,

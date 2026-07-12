@@ -187,4 +187,70 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get games => 'ИГРЫ';
+
+  @override
+  String get selectVersion => 'ВЫБЕРИТЕ ВЕРСИЮ';
+
+  @override
+  String get selectAsset => 'ВЫБЕРИТЕ АССЕТ';
+
+  @override
+  String get selectAssetFirst => 'СНАЧАЛА ВЫБЕРИТЕ АССЕТ';
+
+  @override
+  String get security => 'БЕЗОПАСНОСТЬ';
+
+  @override
+  String get changelog => 'ЖУРНАЛ ИЗМЕНЕНИЙ';
+
+  @override
+  String get readme => 'README';
+
+  @override
+  String get markdown => 'Markdown';
+
+  @override
+  String get owner => 'ВЛАДЕЛЕЦ';
+
+  @override
+  String get languageLabel => 'ЯЗЫК';
+
+  @override
+  String get noReadmeAvailable => 'README НЕТ';
+
+  @override
+  String get failedToLoadReadme => 'ОШИБКА ЗАГРУЗКИ README';
+
+  @override
+  String get noReleaseNotes => 'НЕТ ЗАМЕТК К ВЫПУСКУ';
+
+  @override
+  String get noMatchingIssues => 'НЕТ СОВПАДАЮЩИХ ПРОБЛЕМ';
+
+  @override
+  String get noOpenIssues => 'НЕТ ОТКРЫТЫХ ПРОБЛЕМ';
+
+  @override
+  String get noClosedIssues => 'НЕТ ЗАКРЫТЫХ ПРОБЛЕМ';
+
+  @override
+  String get open => 'ОТКРЫТА';
+
+  @override
+  String get closed => 'ЗАКРЫТА';
+
+  @override
+  String get comments => 'КОММЕНТАРИИ';
+
+  @override
+  String get noCommentsYet => 'ПОКА НЕТ КОММЕНТАРИЕВ';
+
+  @override
+  String get installLatest => 'УСТАНОВИТЬ ПОСЛЕДНЮЮ ВЕРСИЮ';
+
+  @override
+  String get showLess => 'МЕНЬШЕ';
+
+  @override
+  String get readMoreBtn => 'ПОДРОБНЕЕ';
 }

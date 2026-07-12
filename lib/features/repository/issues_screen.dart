@@ -57,7 +57,7 @@ class _IssuesScreenState extends ConsumerState<IssuesScreen> {
           children: [
             _buildTopBar(l10n),
             _buildSearchBar(),
-            _buildStateTabs(),
+            _buildStateTabs(l10n),
             Expanded(
               child: issuesAsync.when(
                 data: (issues) {
@@ -82,8 +82,8 @@ class _IssuesScreenState extends ConsumerState<IssuesScreen> {
                             const SizedBox(height: 12),
                             Text(
                               searchQuery.isNotEmpty
-                                  ? 'NO MATCHING ISSUES'
-                                  : (_selectedState == 'open' ? 'NO OPEN ISSUES' : 'NO CLOSED ISSUES'),
+                                  ? l10n.noMatchingIssues.toUpperCase()
+                                  : (_selectedState == 'open' ? l10n.noOpenIssues.toUpperCase() : l10n.noClosedIssues.toUpperCase()),
                               style: BrutalTheme.subheadingStyle,
                             ),
                           ],
@@ -197,7 +197,7 @@ class _IssuesScreenState extends ConsumerState<IssuesScreen> {
     );
   }
 
-  Widget _buildStateTabs() {
+  Widget _buildStateTabs(AppLocalizations l10n) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       decoration: const BoxDecoration(
@@ -208,9 +208,9 @@ class _IssuesScreenState extends ConsumerState<IssuesScreen> {
       ),
       child: Row(
         children: [
-          _buildStateTab('OPEN', 'open'),
+          _buildStateTab(l10n.open.toUpperCase(), 'open'),
           const SizedBox(width: 8),
-          _buildStateTab('CLOSED', 'closed'),
+          _buildStateTab(l10n.closed.toUpperCase(), 'closed'),
         ],
       ),
     );

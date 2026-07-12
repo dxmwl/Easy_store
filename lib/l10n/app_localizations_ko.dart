@@ -186,4 +186,70 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get games => '게임';
+
+  @override
+  String get selectVersion => '버전 선택';
+
+  @override
+  String get selectAsset => '자산 선택';
+
+  @override
+  String get selectAssetFirst => '자산을 먼저 선택하세요';
+
+  @override
+  String get security => '보안';
+
+  @override
+  String get changelog => '변경 로그';
+
+  @override
+  String get readme => 'README';
+
+  @override
+  String get markdown => 'Markdown';
+
+  @override
+  String get owner => '소유자';
+
+  @override
+  String get languageLabel => '언어';
+
+  @override
+  String get noReadmeAvailable => 'README 없음';
+
+  @override
+  String get failedToLoadReadme => 'README 로드 실패';
+
+  @override
+  String get noReleaseNotes => '릴리스 노트 없음';
+
+  @override
+  String get noMatchingIssues => '일치하는 이슈 없음';
+
+  @override
+  String get noOpenIssues => '열린 이슈 없음';
+
+  @override
+  String get noClosedIssues => '닫힌 이슈 없음';
+
+  @override
+  String get open => '열림';
+
+  @override
+  String get closed => '닫힘';
+
+  @override
+  String get comments => '댓글';
+
+  @override
+  String get noCommentsYet => '댓글 없음';
+
+  @override
+  String get installLatest => '최신 버전 설치';
+
+  @override
+  String get showLess => '접기';
+
+  @override
+  String get readMoreBtn => '더보기';
 }

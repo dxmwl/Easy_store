@@ -188,4 +188,70 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get games => 'खेल';
+
+  @override
+  String get selectVersion => 'संस्करण चुनें';
+
+  @override
+  String get selectAsset => 'एसेट चुनें';
+
+  @override
+  String get selectAssetFirst => 'पहले एसेट चुनें';
+
+  @override
+  String get security => 'सुरक्षा';
+
+  @override
+  String get changelog => 'परिवर्तन लॉग';
+
+  @override
+  String get readme => 'README';
+
+  @override
+  String get markdown => 'Markdown';
+
+  @override
+  String get owner => 'मालिक';
+
+  @override
+  String get languageLabel => 'भाषा';
+
+  @override
+  String get noReadmeAvailable => 'README उपलब्ध नहीं';
+
+  @override
+  String get failedToLoadReadme => 'README लोड करने में विफल';
+
+  @override
+  String get noReleaseNotes => 'रिलीज़ नोट्स उपलब्ध नहीं';
+
+  @override
+  String get noMatchingIssues => 'कोई मेल खाते मुद्दे नहीं';
+
+  @override
+  String get noOpenIssues => 'कोई खुले मुद्दे नहीं';
+
+  @override
+  String get noClosedIssues => 'कोई बंद मुद्दे नहीं';
+
+  @override
+  String get open => 'खुला';
+
+  @override
+  String get closed => 'बंद';
+
+  @override
+  String get comments => 'टिप्पणियाँ';
+
+  @override
+  String get noCommentsYet => 'अभी तक कोई टिप्पणी नहीं';
+
+  @override
+  String get installLatest => 'नवीनतम संस्करण इंस्टॉल करें';
+
+  @override
+  String get showLess => 'कम दिखाएं';
+
+  @override
+  String get readMoreBtn => 'और पढ़ें';
 }

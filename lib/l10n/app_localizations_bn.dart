@@ -188,4 +188,70 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get games => 'খেলা';
+
+  @override
+  String get selectVersion => 'সংস্করণ নির্বাচন করুন';
+
+  @override
+  String get selectAsset => 'অ্যাসেট নির্বাচন করুন';
+
+  @override
+  String get selectAssetFirst => 'প্রথমে অ্যাসেট নির্বাচন করুন';
+
+  @override
+  String get security => 'নিরাপত্তা';
+
+  @override
+  String get changelog => 'পরিবর্তনের লগ';
+
+  @override
+  String get readme => 'README';
+
+  @override
+  String get markdown => 'Markdown';
+
+  @override
+  String get owner => 'মালিক';
+
+  @override
+  String get languageLabel => 'ভাষা';
+
+  @override
+  String get noReadmeAvailable => 'README নেই';
+
+  @override
+  String get failedToLoadReadme => 'README লোড করতে ব্যর্থ';
+
+  @override
+  String get noReleaseNotes => 'রিলিজ নোট নেই';
+
+  @override
+  String get noMatchingIssues => 'কোনো মিলে যাওয়া সমস্যা নেই';
+
+  @override
+  String get noOpenIssues => 'কোনো খোলা সমস্যা নেই';
+
+  @override
+  String get noClosedIssues => 'কোনো বন্ধ সমস্যা নেই';
+
+  @override
+  String get open => 'খোলা';
+
+  @override
+  String get closed => 'বন্ধ';
+
+  @override
+  String get comments => 'মন্তব্য';
+
+  @override
+  String get noCommentsYet => 'এখনো কোনো মন্তব্য নেই';
+
+  @override
+  String get installLatest => 'সর্বশেষ সংস্করণ ইনস্টল করুন';
+
+  @override
+  String get showLess => 'কম দেখান';
+
+  @override
+  String get readMoreBtn => 'আরো পড়ুন';
 }

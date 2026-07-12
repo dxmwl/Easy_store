@@ -186,4 +186,70 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get games => '游戏';
+
+  @override
+  String get selectVersion => '选择版本';
+
+  @override
+  String get selectAsset => '选择资源';
+
+  @override
+  String get selectAssetFirst => '请先选择资源';
+
+  @override
+  String get security => '安全';
+
+  @override
+  String get changelog => '更新日志';
+
+  @override
+  String get readme => 'README';
+
+  @override
+  String get markdown => 'Markdown';
+
+  @override
+  String get owner => '作者';
+
+  @override
+  String get languageLabel => '语言';
+
+  @override
+  String get noReadmeAvailable => '暂无 README';
+
+  @override
+  String get failedToLoadReadme => '加载 README 失败';
+
+  @override
+  String get noReleaseNotes => '暂无更新说明';
+
+  @override
+  String get noMatchingIssues => '无匹配问题';
+
+  @override
+  String get noOpenIssues => '无开放问题';
+
+  @override
+  String get noClosedIssues => '无已关闭问题';
+
+  @override
+  String get open => '开放';
+
+  @override
+  String get closed => '已关闭';
+
+  @override
+  String get comments => '评论';
+
+  @override
+  String get noCommentsYet => '暂无评论';
+
+  @override
+  String get installLatest => '安装最新版';
+
+  @override
+  String get showLess => '收起';
+
+  @override
+  String get readMoreBtn => '阅读更多';
 }

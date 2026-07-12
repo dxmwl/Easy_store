@@ -187,4 +187,70 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get games => 'OYUNLAR';
+
+  @override
+  String get selectVersion => 'SÜRÜM SEÇİN';
+
+  @override
+  String get selectAsset => 'DOSYA SEÇİN';
+
+  @override
+  String get selectAssetFirst => 'ÖNCE DOSYA SEÇİN';
+
+  @override
+  String get security => 'GÜVENLİK';
+
+  @override
+  String get changelog => 'DEĞİŞİKLİK GÜNLÜĞÜ';
+
+  @override
+  String get readme => 'README';
+
+  @override
+  String get markdown => 'Markdown';
+
+  @override
+  String get owner => 'SAHİP';
+
+  @override
+  String get languageLabel => 'DİL';
+
+  @override
+  String get noReadmeAvailable => 'README YOK';
+
+  @override
+  String get failedToLoadReadme => 'README YÜKLENEMEDİ';
+
+  @override
+  String get noReleaseNotes => 'SÜRÜM NOTU YOK';
+
+  @override
+  String get noMatchingIssues => 'EŞLEŞEN SORUN YOK';
+
+  @override
+  String get noOpenIssues => 'AÇIK SORUN YOK';
+
+  @override
+  String get noClosedIssues => 'KAPALI SORUN YOK';
+
+  @override
+  String get open => 'AÇIK';
+
+  @override
+  String get closed => 'KAPALI';
+
+  @override
+  String get comments => 'YORUMLAR';
+
+  @override
+  String get noCommentsYet => 'HENÜZ YORUM YOK';
+
+  @override
+  String get installLatest => 'EN SON SÜRÜMÜ YÜKLE';
+
+  @override
+  String get showLess => 'DAHA AZ';
+
+  @override
+  String get readMoreBtn => 'DAHA FAZLA OKU';
 }

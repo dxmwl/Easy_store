@@ -187,4 +187,70 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get games => 'الألعاب';
+
+  @override
+  String get selectVersion => 'اختر الإصدار';
+
+  @override
+  String get selectAsset => 'اختر الملف';
+
+  @override
+  String get selectAssetFirst => 'اختر ملف أولاً';
+
+  @override
+  String get security => 'الأمان';
+
+  @override
+  String get changelog => 'سجل التغييرات';
+
+  @override
+  String get readme => 'README';
+
+  @override
+  String get markdown => 'Markdown';
+
+  @override
+  String get owner => 'المالك';
+
+  @override
+  String get languageLabel => 'اللغة';
+
+  @override
+  String get noReadmeAvailable => 'لا يوجد README';
+
+  @override
+  String get failedToLoadReadme => 'فشل تحميل README';
+
+  @override
+  String get noReleaseNotes => 'لا توجد ملاحظات الإصدار';
+
+  @override
+  String get noMatchingIssues => 'لا توجد مشاكل مطابقة';
+
+  @override
+  String get noOpenIssues => 'لا توجد مشاكل مفتوحة';
+
+  @override
+  String get noClosedIssues => 'لا توجد مشاكل مغلقة';
+
+  @override
+  String get open => 'مفتوح';
+
+  @override
+  String get closed => 'مغلق';
+
+  @override
+  String get comments => 'التعليقات';
+
+  @override
+  String get noCommentsYet => 'لا توجد تعليقات بعد';
+
+  @override
+  String get installLatest => 'تثبيت الإصدار الأخير';
+
+  @override
+  String get showLess => 'عرض أقل';
+
+  @override
+  String get readMoreBtn => 'اقرأ المزيد';
 }

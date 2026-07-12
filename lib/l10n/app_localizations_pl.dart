@@ -188,4 +188,70 @@ class AppLocalizationsPl extends AppLocalizations {
 
   @override
   String get games => 'GRY';
+
+  @override
+  String get selectVersion => 'WYBIERZ WERSJĘ';
+
+  @override
+  String get selectAsset => 'WYBIERZ ASSET';
+
+  @override
+  String get selectAssetFirst => 'NAJPIERW WYBIERZ ASSET';
+
+  @override
+  String get security => 'BEZPIECZEŃSTWO';
+
+  @override
+  String get changelog => 'DZIENNIK ZMIAN';
+
+  @override
+  String get readme => 'README';
+
+  @override
+  String get markdown => 'Markdown';
+
+  @override
+  String get owner => 'WŁAŚCICIEL';
+
+  @override
+  String get languageLabel => 'JĘZYK';
+
+  @override
+  String get noReadmeAvailable => 'BRAK README';
+
+  @override
+  String get failedToLoadReadme => 'ŁADOWANIE README NIE POWIODŁO SIĘ';
+
+  @override
+  String get noReleaseNotes => 'BRAK NOTATEK DO WERSJI';
+
+  @override
+  String get noMatchingIssues => 'BRAK PASUJĄCYCH ISSUES';
+
+  @override
+  String get noOpenIssues => 'BRAK OTWARTYCH ISSUES';
+
+  @override
+  String get noClosedIssues => 'BRAK ZAMKNIĘTYCH ISSUES';
+
+  @override
+  String get open => 'OTWARTY';
+
+  @override
+  String get closed => 'ZAMKNIĘTY';
+
+  @override
+  String get comments => 'KOMENTARZE';
+
+  @override
+  String get noCommentsYet => 'JESZCZE BRAK KOMENTARZY';
+
+  @override
+  String get installLatest => 'ZAINSTALUJ NAJNOWSZĄ WERSJĘ';
+
+  @override
+  String get showLess => 'MNIJ';
+
+  @override
+  String get readMoreBtn => 'CZYTAJ WIĘCEJ';
 }

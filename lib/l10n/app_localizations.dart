@@ -473,6 +473,138 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'GAMES'**
   String get games;
+
+  /// No description provided for @selectVersion.
+  ///
+  /// In en, this message translates to:
+  /// **'SELECT VERSION'**
+  String get selectVersion;
+
+  /// No description provided for @selectAsset.
+  ///
+  /// In en, this message translates to:
+  /// **'SELECT ASSET'**
+  String get selectAsset;
+
+  /// No description provided for @selectAssetFirst.
+  ///
+  /// In en, this message translates to:
+  /// **'SELECT ASSET FIRST'**
+  String get selectAssetFirst;
+
+  /// No description provided for @security.
+  ///
+  /// In en, this message translates to:
+  /// **'SECURITY'**
+  String get security;
+
+  /// No description provided for @changelog.
+  ///
+  /// In en, this message translates to:
+  /// **'CHANGELOG'**
+  String get changelog;
+
+  /// No description provided for @readme.
+  ///
+  /// In en, this message translates to:
+  /// **'README'**
+  String get readme;
+
+  /// No description provided for @markdown.
+  ///
+  /// In en, this message translates to:
+  /// **'MARKDOWN'**
+  String get markdown;
+
+  /// No description provided for @owner.
+  ///
+  /// In en, this message translates to:
+  /// **'OWNER'**
+  String get owner;
+
+  /// No description provided for @languageLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'LANGUAGE'**
+  String get languageLabel;
+
+  /// No description provided for @noReadmeAvailable.
+  ///
+  /// In en, this message translates to:
+  /// **'NO README AVAILABLE'**
+  String get noReadmeAvailable;
+
+  /// No description provided for @failedToLoadReadme.
+  ///
+  /// In en, this message translates to:
+  /// **'FAILED TO LOAD README'**
+  String get failedToLoadReadme;
+
+  /// No description provided for @noReleaseNotes.
+  ///
+  /// In en, this message translates to:
+  /// **'NO RELEASE NOTES'**
+  String get noReleaseNotes;
+
+  /// No description provided for @noMatchingIssues.
+  ///
+  /// In en, this message translates to:
+  /// **'NO MATCHING ISSUES'**
+  String get noMatchingIssues;
+
+  /// No description provided for @noOpenIssues.
+  ///
+  /// In en, this message translates to:
+  /// **'NO OPEN ISSUES'**
+  String get noOpenIssues;
+
+  /// No description provided for @noClosedIssues.
+  ///
+  /// In en, this message translates to:
+  /// **'NO CLOSED ISSUES'**
+  String get noClosedIssues;
+
+  /// No description provided for @open.
+  ///
+  /// In en, this message translates to:
+  /// **'OPEN'**
+  String get open;
+
+  /// No description provided for @closed.
+  ///
+  /// In en, this message translates to:
+  /// **'CLOSED'**
+  String get closed;
+
+  /// No description provided for @comments.
+  ///
+  /// In en, this message translates to:
+  /// **'COMMENTS'**
+  String get comments;
+
+  /// No description provided for @noCommentsYet.
+  ///
+  /// In en, this message translates to:
+  /// **'NO COMMENTS YET'**
+  String get noCommentsYet;
+
+  /// No description provided for @installLatest.
+  ///
+  /// In en, this message translates to:
+  /// **'INSTALL LATEST'**
+  String get installLatest;
+
+  /// No description provided for @showLess.
+  ///
+  /// In en, this message translates to:
+  /// **'SHOW LESS'**
+  String get showLess;
+
+  /// No description provided for @readMoreBtn.
+  ///
+  /// In en, this message translates to:
+  /// **'READ MORE'**
+  String get readMoreBtn;
 }
 
 class _AppLocalizationsDelegate

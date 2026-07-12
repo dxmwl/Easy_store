@@ -188,4 +188,70 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get games => 'GIOCHI';
+
+  @override
+  String get selectVersion => 'SELEZIONA VERSIONE';
+
+  @override
+  String get selectAsset => 'SELEZIONA ASSET';
+
+  @override
+  String get selectAssetFirst => 'SELEZIONA ASSET PRIMA';
+
+  @override
+  String get security => 'SICUREZZA';
+
+  @override
+  String get changelog => 'LOG DELLE MODIFICHE';
+
+  @override
+  String get readme => 'README';
+
+  @override
+  String get markdown => 'Markdown';
+
+  @override
+  String get owner => 'PROPRIETARIO';
+
+  @override
+  String get languageLabel => 'LINGUA';
+
+  @override
+  String get noReadmeAvailable => 'NESSUN README';
+
+  @override
+  String get failedToLoadReadme => 'CARICAMENTO README FALLITO';
+
+  @override
+  String get noReleaseNotes => 'NESSUNA NOTA DI RILASCIO';
+
+  @override
+  String get noMatchingIssues => 'NESSUN ISSUE CORRISPONDENTE';
+
+  @override
+  String get noOpenIssues => 'NESSUN ISSUE APERTO';
+
+  @override
+  String get noClosedIssues => 'NESSUN ISSUE CHIUSO';
+
+  @override
+  String get open => 'APERTO';
+
+  @override
+  String get closed => 'CHIUSO';
+
+  @override
+  String get comments => 'COMMENTI';
+
+  @override
+  String get noCommentsYet => 'NESSUN COMMENTO ANCORA';
+
+  @override
+  String get installLatest => 'INSTALLA ULTIMA VERSIONE';
+
+  @override
+  String get showLess => 'MENO';
+
+  @override
+  String get readMoreBtn => 'LEGGI DI PIÙ';
 }
