@@ -34,7 +34,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
-    final searchResults = ref.watch(searchResultsProvider);
+    final paginationState = ref.watch(searchPaginationProvider);
 
     return Scaffold(
       backgroundColor: BrutalTheme.canvas,
@@ -78,46 +78,93 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
               ),
             ),
             Expanded(
-              child: searchResults.when(
-                data: (result) {
-                  if (result == null || result.items == null || result.items!.isEmpty) {
-                    return Center(
-                      child: Text(
-                        l10n.typeToSearch.toUpperCase(),
-                        style: BrutalTheme.bodyStyle.copyWith(
-                          fontWeight: FontWeight.w900,
-                          color: BrutalTheme.disabled,
-                        ),
-                      ),
-                    );
-                  }
-                  return ListView.builder(
-                    padding: const EdgeInsets.all(16),
-                    itemCount: result.items!.length,
-                    itemBuilder: (context, index) {
-                      final item = result.items![index];
-                      final owner = item.fullName.split('/')[0];
-                      final name = item.fullName.split('/')[1];
-                      return Padding(
-                        padding: const EdgeInsets.only(bottom: 12),
-                        child: _buildMangaSearchItem(item, owner, name, l10n),
-                      );
-                    },
-                  );
-                },
-                loading: () => const Center(
-                  child: CircularProgressIndicator(color: BrutalTheme.ink),
-                ),
-                error: (error, stack) => Center(
-                  child: Text(
-                    l10n.searchFailed.toUpperCase(),
-                    style: BrutalTheme.subheadingStyle.copyWith(color: BrutalTheme.primary),
-                  ),
-                ),
-              ),
+              child: _buildSearchResults(paginationState, l10n),
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _buildSearchResults(SearchPaginationState state, AppLocalizations l10n) {
+    if (state.isLoading && state.items.isEmpty) {
+      return Center(
+        child: Text(
+          l10n.typeToSearch.toUpperCase(),
+          style: BrutalTheme.bodyStyle.copyWith(
+            fontWeight: FontWeight.w900,
+            color: BrutalTheme.disabled,
+          ),
+        ),
+      );
+    }
+
+    if (state.error != null && state.items.isEmpty) {
+      return Center(
+        child: BrutalCard(
+          padding: const EdgeInsets.all(32),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const Icon(Icons.error_outline, size: 48, color: BrutalTheme.primary),
+              const SizedBox(height: 12),
+              Text(
+                l10n.searchFailed.toUpperCase(),
+                style: BrutalTheme.subheadingStyle,
+              ),
+              const SizedBox(height: 16),
+              BrutalButton(
+                onPressed: () => ref.read(searchPaginationProvider.notifier).refresh(),
+                child: Text(l10n.retry.toUpperCase()),
+              ),
+            ],
+          ),
+        ),
+      );
+    }
+
+    if (state.items.isEmpty) {
+      return Center(
+        child: Text(
+          l10n.typeToSearch.toUpperCase(),
+          style: BrutalTheme.bodyStyle.copyWith(
+            fontWeight: FontWeight.w900,
+            color: BrutalTheme.disabled,
+          ),
+        ),
+      );
+    }
+
+    return NotificationListener<ScrollNotification>(
+      onNotification: (notification) {
+        if (notification is ScrollEndNotification &&
+            notification.metrics.extentAfter < 200 &&
+            !state.isLoading &&
+            state.hasMore) {
+          ref.read(searchPaginationProvider.notifier).loadMore();
+        }
+        return false;
+      },
+      child: ListView.builder(
+        padding: const EdgeInsets.all(16),
+        itemCount: state.items.length + (state.hasMore ? 1 : 0),
+        itemBuilder: (context, index) {
+          if (index == state.items.length) {
+            return const Center(
+              child: Padding(
+                padding: EdgeInsets.all(16),
+                child: CircularProgressIndicator(color: BrutalTheme.ink),
+              ),
+            );
+          }
+          final item = state.items[index];
+          final owner = item.fullName.split('/')[0];
+          final name = item.fullName.split('/')[1];
+          return Padding(
+            padding: const EdgeInsets.only(bottom: 12),
+            child: _buildMangaSearchItem(item, owner, name, l10n),
+          );
+        },
       ),
     );
   }

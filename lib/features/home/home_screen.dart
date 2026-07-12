@@ -48,8 +48,8 @@ class HomeScreen extends ConsumerStatefulWidget {
 }
 
 class _HomeScreenState extends ConsumerState<HomeScreen> {
-  // 当前选中的平台，默认为 Android
-  PlatformItem _selectedPlatform = platformOptions.firstWhere((p) => p.id == 'android');
+  // 当前选中的平台，默认为全部
+  PlatformItem _selectedPlatform = platformOptions.firstWhere((p) => p.id == 'all');
   // 当前选中的分类索引
   int _selectedCategoryIndex = 0;
 
@@ -62,7 +62,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       category: categoryKey,
       platform: _selectedPlatform.id,
     );
-    final reposAsync = ref.watch(categorySearchProvider(searchParams));
+    final paginationState = ref.watch(paginationProvider(searchParams));
 
     return Scaffold(
       backgroundColor: BrutalTheme.canvas,
@@ -157,71 +157,102 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             Expanded(
               child: RefreshIndicator(
                 onRefresh: () async {
-                  ref.invalidate(categorySearchProvider(searchParams));
+                  ref.read(paginationProvider(searchParams).notifier).refresh();
                 },
                 color: BrutalTheme.ink,
                 backgroundColor: BrutalTheme.canvas,
-                child: reposAsync.when(
-                  data: (repos) {
-                    if (repos.isEmpty) {
-                      return Center(
-                        child: BrutalCard(
-                          padding: const EdgeInsets.all(32),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              const Icon(Icons.search_off, size: 48, color: BrutalTheme.disabled),
-                              const SizedBox(height: 12),
-                              Text(
-                                l10n.noData.toUpperCase(),
-                                style: BrutalTheme.subheadingStyle,
-                              ),
-                            ],
-                          ),
-                        ),
-                      );
-                    }
-                    return ListView.builder(
-                      padding: const EdgeInsets.all(16),
-                      itemCount: repos.length,
-                      itemBuilder: (context, index) {
-                        return Padding(
-                          padding: const EdgeInsets.only(bottom: 12),
-                          child: _buildMangaRepoItem(repos[index], l10n),
-                        );
-                      },
-                    );
-                  },
-                  loading: () => const Center(
-                    child: CircularProgressIndicator(color: BrutalTheme.ink),
-                  ),
-                  error: (error, stack) => Center(
-                    child: BrutalCard(
-                      padding: const EdgeInsets.all(32),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          const Icon(Icons.error_outline, size: 48, color: BrutalTheme.primary),
-                          const SizedBox(height: 12),
-                          Text(
-                            l10n.loadError.toUpperCase(),
-                            style: BrutalTheme.subheadingStyle,
-                          ),
-                          const SizedBox(height: 8),
-                          Text(
-                            '$error',
-                            style: BrutalTheme.metaStyle,
-                            textAlign: TextAlign.center,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
+                child: _buildContentList(paginationState, searchParams, l10n),
               ),
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _buildContentList(PaginationState state, SearchParams searchParams, AppLocalizations l10n) {
+    if (state.isLoading && state.items.isEmpty) {
+      return const Center(
+        child: CircularProgressIndicator(color: BrutalTheme.ink),
+      );
+    }
+
+    if (state.error != null && state.items.isEmpty) {
+      return Center(
+        child: BrutalCard(
+          padding: const EdgeInsets.all(32),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const Icon(Icons.error_outline, size: 48, color: BrutalTheme.primary),
+              const SizedBox(height: 12),
+              Text(
+                l10n.loadError.toUpperCase(),
+                style: BrutalTheme.subheadingStyle,
+              ),
+              const SizedBox(height: 8),
+              Text(
+                state.error!,
+                style: BrutalTheme.metaStyle,
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 16),
+              BrutalButton(
+                onPressed: () => ref.read(paginationProvider(searchParams).notifier).refresh(),
+                child: Text(l10n.retry.toUpperCase()),
+              ),
+            ],
+          ),
+        ),
+      );
+    }
+
+    if (state.items.isEmpty) {
+      return Center(
+        child: BrutalCard(
+          padding: const EdgeInsets.all(32),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const Icon(Icons.search_off, size: 48, color: BrutalTheme.disabled),
+              const SizedBox(height: 12),
+              Text(
+                l10n.noData.toUpperCase(),
+                style: BrutalTheme.subheadingStyle,
+              ),
+            ],
+          ),
+        ),
+      );
+    }
+
+    return NotificationListener<ScrollNotification>(
+      onNotification: (notification) {
+        if (notification is ScrollEndNotification &&
+            notification.metrics.extentAfter < 200 &&
+            !state.isLoading &&
+            state.hasMore) {
+          ref.read(paginationProvider(searchParams).notifier).loadMore();
+        }
+        return false;
+      },
+      child: ListView.builder(
+        padding: const EdgeInsets.all(16),
+        itemCount: state.items.length + (state.hasMore ? 1 : 0),
+        itemBuilder: (context, index) {
+          if (index == state.items.length) {
+            return const Center(
+              child: Padding(
+                padding: EdgeInsets.all(16),
+                child: CircularProgressIndicator(color: BrutalTheme.ink),
+              ),
+            );
+          }
+          return Padding(
+            padding: const EdgeInsets.only(bottom: 12),
+            child: _buildMangaRepoItem(state.items[index], l10n),
+          );
+        },
       ),
     );
   }
