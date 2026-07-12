@@ -12,6 +12,8 @@ final issuesProvider = FutureProvider.family<List<GithubIssue>, ({String owner, 
   return api.getIssues(params.owner, params.repo, state: params.state);
 });
 
+final issueSearchQueryProvider = StateProvider<String>((ref) => '');
+
 class IssuesScreen extends ConsumerStatefulWidget {
   final String owner;
   final String repo;
@@ -28,6 +30,15 @@ class IssuesScreen extends ConsumerStatefulWidget {
 
 class _IssuesScreenState extends ConsumerState<IssuesScreen> {
   String _selectedState = 'open';
+  final TextEditingController _searchController = TextEditingController();
+  final FocusNode _searchFocusNode = FocusNode();
+
+  @override
+  void dispose() {
+    _searchController.dispose();
+    _searchFocusNode.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,6 +48,7 @@ class _IssuesScreenState extends ConsumerState<IssuesScreen> {
       repo: widget.repo,
       state: _selectedState,
     )));
+    final searchQuery = ref.watch(issueSearchQueryProvider);
 
     return Scaffold(
       backgroundColor: BrutalTheme.canvas,
@@ -44,21 +56,34 @@ class _IssuesScreenState extends ConsumerState<IssuesScreen> {
         child: Column(
           children: [
             _buildTopBar(l10n),
+            _buildSearchBar(),
             _buildStateTabs(),
             Expanded(
               child: issuesAsync.when(
                 data: (issues) {
-                  if (issues.isEmpty) {
+                  final filteredIssues = searchQuery.isEmpty
+                      ? issues
+                      : issues.where((issue) =>
+                          issue.title.toLowerCase().contains(searchQuery.toLowerCase()) ||
+                          (issue.body?.toLowerCase().contains(searchQuery.toLowerCase()) ?? false)).toList();
+
+                  if (filteredIssues.isEmpty) {
                     return Center(
                       child: MangaContainer(
                         padding: const EdgeInsets.all(32),
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            const Icon(Icons.check_circle, size: 48, color: BrutalTheme.primary),
+                            Icon(
+                              searchQuery.isNotEmpty ? Icons.search_off : Icons.check_circle,
+                              size: 48,
+                              color: BrutalTheme.disabled,
+                            ),
                             const SizedBox(height: 12),
                             Text(
-                              _selectedState == 'open' ? 'NO OPEN ISSUES' : 'NO CLOSED ISSUES',
+                              searchQuery.isNotEmpty
+                                  ? 'NO MATCHING ISSUES'
+                                  : (_selectedState == 'open' ? 'NO OPEN ISSUES' : 'NO CLOSED ISSUES'),
                               style: BrutalTheme.subheadingStyle,
                             ),
                           ],
@@ -68,11 +93,11 @@ class _IssuesScreenState extends ConsumerState<IssuesScreen> {
                   }
                   return ListView.builder(
                     padding: const EdgeInsets.all(16),
-                    itemCount: issues.length,
+                    itemCount: filteredIssues.length,
                     itemBuilder: (context, index) {
                       return Padding(
                         padding: const EdgeInsets.only(bottom: 12),
-                        child: _buildIssueItem(issues[index]),
+                        child: _buildIssueItem(filteredIssues[index]),
                       );
                     },
                   );
@@ -123,6 +148,51 @@ class _IssuesScreenState extends ConsumerState<IssuesScreen> {
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _buildSearchBar() {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+      decoration: const BoxDecoration(
+        color: BrutalTheme.canvas,
+        border: Border(
+          bottom: BorderSide(color: BrutalTheme.ink, width: 2),
+        ),
+      ),
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 12),
+        decoration: BoxDecoration(
+          color: BrutalTheme.white,
+          border: Border.all(color: BrutalTheme.ink, width: 2),
+        ),
+        child: TextField(
+          controller: _searchController,
+          focusNode: _searchFocusNode,
+          style: BrutalTheme.bodyStyle.copyWith(fontSize: 14),
+          onChanged: (value) {
+            ref.read(issueSearchQueryProvider.notifier).state = value;
+          },
+          decoration: InputDecoration(
+            hintText: 'SEARCH ISSUES...',
+            hintStyle: BrutalTheme.bodyStyle.copyWith(
+              color: BrutalTheme.disabled,
+            ),
+            border: InputBorder.none,
+            contentPadding: const EdgeInsets.symmetric(vertical: 10),
+            prefixIcon: const Icon(Icons.search, size: 20, color: BrutalTheme.ink),
+            suffixIcon: ref.watch(issueSearchQueryProvider).isNotEmpty
+                ? GestureDetector(
+                    onTap: () {
+                      _searchController.clear();
+                      ref.read(issueSearchQueryProvider.notifier).state = '';
+                    },
+                    child: const Icon(Icons.close, size: 20, color: BrutalTheme.ink),
+                  )
+                : null,
+          ),
+        ),
       ),
     );
   }

@@ -8,6 +8,7 @@ import '../../shared/widgets/manga_container.dart';
 import '../../shared/widgets/repo_header_card.dart';
 import '../../shared/widgets/stats_grid.dart';
 import '../../core/models/repository.dart';
+import 'changelog_screen.dart';
 import '../../core/models/release.dart';
 import 'providers/repository_providers.dart';
 import 'issues_screen.dart';
@@ -818,7 +819,13 @@ class _RepositoryScreenState extends ConsumerState<RepositoryScreen> {
                   const SizedBox(height: 12),
                   Center(
                     child: GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => ChangelogScreen(release: release),
+                          ),
+                        );
+                      },
                       child: Container(
                         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 10),
                         decoration: BoxDecoration(
