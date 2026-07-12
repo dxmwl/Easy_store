@@ -5,6 +5,7 @@ import '../../core/models/release.dart';
 import '../../core/models/search_result.dart';
 import '../../core/models/github_issue.dart';
 import '../../core/models/github_comment.dart';
+import '../../core/models/github_user.dart';
 
 final githubApiProvider = Provider<GithubApi>((ref) {
   return GithubApi();
@@ -155,7 +156,15 @@ class GithubApi {
 
   Future<String> getReadme(String owner, String repo) async {
     try {
-      final response = await _dio.get('/repos/$owner/$repo/readme');
+      final response = await _dio.get(
+        '/repos/$owner/$repo/readme',
+        options: Options(
+          headers: {'Accept': 'application/vnd.github.v3.raw'},
+        ),
+      );
+      if (response.data is String) {
+        return response.data;
+      }
       return response.data['content'] ?? '';
     } catch (e) {
       return '';
@@ -205,6 +214,32 @@ class GithubApi {
 
     return (response.data as List)
         .map((e) => GithubComment.fromJson(e))
+        .toList();
+  }
+
+  Future<GithubUser> getUser(String username) async {
+    final response = await _dio.get('/users/$username');
+    return GithubUser.fromJson(response.data);
+  }
+
+  Future<List<Repository>> getUserRepos(
+    String username, {
+    int page = 1,
+    int perPage = 30,
+    String sort = 'updated',
+  }) async {
+    final response = await _dio.get(
+      '/users/$username/repos',
+      queryParameters: {
+        'page': page,
+        'per_page': perPage,
+        'sort': sort,
+        'direction': 'desc',
+      },
+    );
+
+    return (response.data as List)
+        .map((e) => Repository.fromJson(e))
         .toList();
   }
 }

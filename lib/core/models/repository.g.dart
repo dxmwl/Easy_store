@@ -26,6 +26,7 @@ _$RepositoryImpl _$$RepositoryImplFromJson(Map<String, dynamic> json) =>
       license: json['license'] == null
           ? null
           : RepoLicense.fromJson(json['license'] as Map<String, dynamic>),
+      defaultBranch: json['default_branch'] as String?,
       createdAt: json['created_at'] == null
           ? null
           : DateTime.parse(json['created_at'] as String),
@@ -53,6 +54,7 @@ Map<String, dynamic> _$$RepositoryImplToJson(_$RepositoryImpl instance) =>
       'language': instance.language,
       'topics': instance.topics,
       'license': instance.license,
+      'default_branch': instance.defaultBranch,
       'created_at': instance.createdAt?.toIso8601String(),
       'updated_at': instance.updatedAt?.toIso8601String(),
       'pushed_at': instance.pushedAt?.toIso8601String(),

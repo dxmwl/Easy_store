@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../config/brutal_theme.dart';
 import '../../core/utils/platform_detector.dart';
 import '../../core/models/repository.dart';
+import '../../features/repository/developer_profile_screen.dart';
 
 /// Manga风格仓库信息头部卡片
 class RepoHeaderCard extends StatelessWidget {
@@ -37,7 +39,7 @@ class RepoHeaderCard extends StatelessWidget {
           // 顶部区域：图标 + 红色装饰
           _buildTopArea(),
           // 信息区域
-          _buildInfoArea(platforms),
+          _buildInfoArea(context, platforms),
         ],
       ),
     );
@@ -100,21 +102,47 @@ class RepoHeaderCard extends StatelessWidget {
     );
   }
 
-  Widget _buildInfoArea(List<String> platforms) {
+  Widget _buildInfoArea(BuildContext context, List<String> platforms) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // 用户名
-          Text(
-            repo.owner.login.toUpperCase(),
-            style: const TextStyle(
-              fontFamily: 'Arial',
-              fontSize: 12,
-              fontWeight: FontWeight.w600,
-              color: BrutalTheme.disabled,
-              letterSpacing: 0.5,
+          // 用户名（可点击）
+          GestureDetector(
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => DeveloperProfileScreen(
+                    username: repo.owner.login,
+                  ),
+                ),
+              );
+            },
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                ClipOval(
+                  child: CachedNetworkImage(
+                    imageUrl: repo.owner.avatarUrl,
+                    width: 20,
+                    height: 20,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                const SizedBox(width: 6),
+                Text(
+                  repo.owner.login.toUpperCase(),
+                  style: const TextStyle(
+                    fontFamily: 'Arial',
+                    fontSize: 12,
+                    fontWeight: FontWeight.w600,
+                    color: BrutalTheme.primary,
+                    letterSpacing: 0.5,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+              ],
             ),
           ),
           const SizedBox(height: 4),
@@ -129,6 +157,42 @@ class RepoHeaderCard extends StatelessWidget {
               letterSpacing: 0.3,
             ),
           ),
+          const SizedBox(height: 8),
+          // GitHub 地址
+          if (repo.htmlUrl != null)
+            GestureDetector(
+              onTap: () async {
+                final url = Uri.parse(repo.htmlUrl!);
+                if (await canLaunchUrl(url)) {
+                  await launchUrl(url);
+                }
+              },
+              child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                decoration: BoxDecoration(
+                  color: BrutalTheme.surface,
+                  border: Border.all(color: BrutalTheme.ink, width: 1.5),
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const Icon(Icons.link, size: 12, color: BrutalTheme.ink),
+                    const SizedBox(width: 4),
+                    Text(
+                      repo.htmlUrl!,
+                      style: const TextStyle(
+                        fontFamily: 'Courier New',
+                        fontSize: 10,
+                        color: BrutalTheme.ink,
+                        decoration: TextDecoration.underline,
+                      ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ],
+                ),
+              ),
+            ),
           const SizedBox(height: 8),
           // 更新时间
           if (repo.pushedAt != null)

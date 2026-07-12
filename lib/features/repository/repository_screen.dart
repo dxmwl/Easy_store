@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
+import 'package:markdown/markdown.dart' as md;
 import 'package:url_launcher/url_launcher.dart';
 import '../../l10n/app_localizations.dart';
 import '../../config/brutal_theme.dart';
@@ -925,80 +926,17 @@ class _RepositoryScreenState extends ConsumerState<RepositoryScreen> {
                   ),
                 );
               }
-              return Container(
-                width: double.infinity,
-                padding: const EdgeInsets.all(16),
-                decoration: BoxDecoration(
-                  color: BrutalTheme.white,
-                  border: Border.all(color: BrutalTheme.ink, width: 2),
-                ),
-                child: MarkdownBody(
-                  data: readme,
-                  selectable: true,
-                  styleSheet: MarkdownStyleSheet(
-                    p: const TextStyle(
-                      fontFamily: 'Courier New',
-                      fontSize: 14,
-                      color: BrutalTheme.ink,
-                      height: 1.6,
-                    ),
-                    h1: const TextStyle(
-                      fontFamily: 'Arial Black',
-                      fontSize: 24,
-                      fontWeight: FontWeight.w900,
-                      color: BrutalTheme.ink,
-                    ),
-                    h2: const TextStyle(
-                      fontFamily: 'Arial Black',
-                      fontSize: 20,
-                      fontWeight: FontWeight.w900,
-                      color: BrutalTheme.ink,
-                    ),
-                    h3: const TextStyle(
-                      fontFamily: 'Arial Black',
-                      fontSize: 16,
-                      fontWeight: FontWeight.w900,
-                      color: BrutalTheme.ink,
-                    ),
-                    code: const TextStyle(
-                      fontFamily: 'Courier New',
-                      fontSize: 12,
-                      color: BrutalTheme.ink,
-                      backgroundColor: BrutalTheme.surface,
-                    ),
-                    codeblockDecoration: BoxDecoration(
-                      color: BrutalTheme.surface,
-                      border: Border.all(color: BrutalTheme.ink, width: 1),
-                    ),
-                    a: const TextStyle(
-                      fontFamily: 'Courier New',
-                      fontSize: 14,
-                      color: BrutalTheme.primary,
-                      fontWeight: FontWeight.w700,
-                      decoration: TextDecoration.underline,
-                    ),
-                    blockquote: const TextStyle(
-                      fontFamily: 'Courier New',
-                      fontSize: 14,
-                      color: BrutalTheme.disabled,
-                      fontStyle: FontStyle.italic,
-                    ),
-                    blockquoteDecoration: BoxDecoration(
-                      border: Border(
-                        left: BorderSide(color: BrutalTheme.ink, width: 4),
-                      ),
-                    ),
-                    tableHead: const TextStyle(
-                      fontFamily: 'Arial Black',
-                      fontSize: 12,
-                      fontWeight: FontWeight.w900,
-                      color: BrutalTheme.ink,
-                    ),
-                    tableBody: const TextStyle(
-                      fontFamily: 'Courier New',
-                      fontSize: 12,
-                      color: BrutalTheme.ink,
-                    ),
+              return ConstrainedBox(
+                constraints: const BoxConstraints(maxHeight: 600),
+                child: Container(
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: BrutalTheme.white,
+                    border: Border.all(color: BrutalTheme.ink, width: 2),
+                  ),
+                  child: SingleChildScrollView(
+                    padding: const EdgeInsets.all(16),
+                    child: _buildReadmeMarkdown(readme, repo.defaultBranch ?? 'main'),
                   ),
                 ),
               );
@@ -1086,5 +1024,114 @@ class _RepositoryScreenState extends ConsumerState<RepositoryScreen> {
         ),
       ),
     );
+  }
+
+  Widget _buildReadmeMarkdown(String readme, String defaultBranch) {
+    final baseUrl = 'https://raw.githubusercontent.com/${widget.owner}/${widget.repo}/$defaultBranch/';
+    final processedReadme = _processReadmeUrls(readme, baseUrl);
+    
+    return MarkdownBody(
+      data: processedReadme,
+      selectable: true,
+      extensionSet: md.ExtensionSet.gitHubFlavored,
+      styleSheet: MarkdownStyleSheet(
+        p: const TextStyle(
+          fontFamily: 'Courier New',
+          fontSize: 14,
+          color: BrutalTheme.ink,
+          height: 1.6,
+        ),
+        h1: const TextStyle(
+          fontFamily: 'Arial Black',
+          fontSize: 24,
+          fontWeight: FontWeight.w900,
+          color: BrutalTheme.ink,
+        ),
+        h2: const TextStyle(
+          fontFamily: 'Arial Black',
+          fontSize: 20,
+          fontWeight: FontWeight.w900,
+          color: BrutalTheme.ink,
+        ),
+        h3: const TextStyle(
+          fontFamily: 'Arial Black',
+          fontSize: 16,
+          fontWeight: FontWeight.w900,
+          color: BrutalTheme.ink,
+        ),
+        code: const TextStyle(
+          fontFamily: 'Courier New',
+          fontSize: 12,
+          color: BrutalTheme.ink,
+          backgroundColor: BrutalTheme.surface,
+        ),
+        codeblockDecoration: BoxDecoration(
+          color: BrutalTheme.surface,
+          border: Border.all(color: BrutalTheme.ink, width: 1),
+        ),
+        a: const TextStyle(
+          fontFamily: 'Courier New',
+          fontSize: 14,
+          color: BrutalTheme.primary,
+          fontWeight: FontWeight.w700,
+          decoration: TextDecoration.underline,
+        ),
+        blockquote: const TextStyle(
+          fontFamily: 'Courier New',
+          fontSize: 14,
+          color: BrutalTheme.disabled,
+          fontStyle: FontStyle.italic,
+        ),
+        blockquoteDecoration: BoxDecoration(
+          border: Border(
+            left: BorderSide(color: BrutalTheme.ink, width: 4),
+          ),
+        ),
+        tableHead: const TextStyle(
+          fontFamily: 'Arial Black',
+          fontSize: 12,
+          fontWeight: FontWeight.w900,
+          color: BrutalTheme.ink,
+        ),
+        tableBody: const TextStyle(
+          fontFamily: 'Courier New',
+          fontSize: 12,
+          color: BrutalTheme.ink,
+        ),
+      ),
+    );
+  }
+
+  String _processReadmeUrls(String content, String baseUrl) {
+    // 处理 Markdown 图片 ![alt](url)
+    content = content.replaceAllMapped(
+      RegExp(r'!\[([^\]]*)\]\(([^)]+)\)'),
+      (match) {
+        final alt = match.group(1);
+        var url = match.group(2)!;
+        
+        if (!url.startsWith('http://') && !url.startsWith('https://')) {
+          url = '$baseUrl$url';
+        }
+        
+        return '![$alt]($url)';
+      },
+    );
+    
+    // 处理 HTML img 标签
+    content = content.replaceAllMapped(
+      RegExp(r'<img\s+[^>]*src="([^"]+)"[^>]*>', caseSensitive: false),
+      (match) {
+        var url = match.group(1)!;
+        
+        if (!url.startsWith('http://') && !url.startsWith('https://')) {
+          url = '$baseUrl$url';
+        }
+        
+        return '<img src="$url" />';
+      },
+    );
+    
+    return content;
   }
 }

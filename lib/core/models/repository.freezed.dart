@@ -40,6 +40,8 @@ mixin _$Repository {
   String? get language => throw _privateConstructorUsedError;
   List<String>? get topics => throw _privateConstructorUsedError;
   RepoLicense? get license => throw _privateConstructorUsedError;
+  @JsonKey(name: 'default_branch')
+  String? get defaultBranch => throw _privateConstructorUsedError;
   @JsonKey(name: 'created_at')
   DateTime? get createdAt => throw _privateConstructorUsedError;
   @JsonKey(name: 'updated_at')
@@ -79,6 +81,7 @@ abstract class $RepositoryCopyWith<$Res> {
     String? language,
     List<String>? topics,
     RepoLicense? license,
+    @JsonKey(name: 'default_branch') String? defaultBranch,
     @JsonKey(name: 'created_at') DateTime? createdAt,
     @JsonKey(name: 'updated_at') DateTime? updatedAt,
     @JsonKey(name: 'pushed_at') DateTime? pushedAt,
@@ -117,6 +120,7 @@ class _$RepositoryCopyWithImpl<$Res, $Val extends Repository>
     Object? language = freezed,
     Object? topics = freezed,
     Object? license = freezed,
+    Object? defaultBranch = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
     Object? pushedAt = freezed,
@@ -179,6 +183,10 @@ class _$RepositoryCopyWithImpl<$Res, $Val extends Repository>
                 ? _value.license
                 : license // ignore: cast_nullable_to_non_nullable
                       as RepoLicense?,
+            defaultBranch: freezed == defaultBranch
+                ? _value.defaultBranch
+                : defaultBranch // ignore: cast_nullable_to_non_nullable
+                      as String?,
             createdAt: freezed == createdAt
                 ? _value.createdAt
                 : createdAt // ignore: cast_nullable_to_non_nullable
@@ -245,6 +253,7 @@ abstract class _$$RepositoryImplCopyWith<$Res>
     String? language,
     List<String>? topics,
     RepoLicense? license,
+    @JsonKey(name: 'default_branch') String? defaultBranch,
     @JsonKey(name: 'created_at') DateTime? createdAt,
     @JsonKey(name: 'updated_at') DateTime? updatedAt,
     @JsonKey(name: 'pushed_at') DateTime? pushedAt,
@@ -284,6 +293,7 @@ class __$$RepositoryImplCopyWithImpl<$Res>
     Object? language = freezed,
     Object? topics = freezed,
     Object? license = freezed,
+    Object? defaultBranch = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
     Object? pushedAt = freezed,
@@ -346,6 +356,10 @@ class __$$RepositoryImplCopyWithImpl<$Res>
             ? _value.license
             : license // ignore: cast_nullable_to_non_nullable
                   as RepoLicense?,
+        defaultBranch: freezed == defaultBranch
+            ? _value.defaultBranch
+            : defaultBranch // ignore: cast_nullable_to_non_nullable
+                  as String?,
         createdAt: freezed == createdAt
             ? _value.createdAt
             : createdAt // ignore: cast_nullable_to_non_nullable
@@ -381,6 +395,7 @@ class _$RepositoryImpl implements _Repository {
     this.language,
     final List<String>? topics,
     this.license,
+    @JsonKey(name: 'default_branch') this.defaultBranch,
     @JsonKey(name: 'created_at') this.createdAt,
     @JsonKey(name: 'updated_at') this.updatedAt,
     @JsonKey(name: 'pushed_at') this.pushedAt,
@@ -431,6 +446,9 @@ class _$RepositoryImpl implements _Repository {
   @override
   final RepoLicense? license;
   @override
+  @JsonKey(name: 'default_branch')
+  final String? defaultBranch;
+  @override
   @JsonKey(name: 'created_at')
   final DateTime? createdAt;
   @override
@@ -442,7 +460,7 @@ class _$RepositoryImpl implements _Repository {
 
   @override
   String toString() {
-    return 'Repository(id: $id, name: $name, fullName: $fullName, owner: $owner, description: $description, private: $private, htmlUrl: $htmlUrl, homepage: $homepage, stargazersCount: $stargazersCount, forksCount: $forksCount, openIssuesCount: $openIssuesCount, language: $language, topics: $topics, license: $license, createdAt: $createdAt, updatedAt: $updatedAt, pushedAt: $pushedAt)';
+    return 'Repository(id: $id, name: $name, fullName: $fullName, owner: $owner, description: $description, private: $private, htmlUrl: $htmlUrl, homepage: $homepage, stargazersCount: $stargazersCount, forksCount: $forksCount, openIssuesCount: $openIssuesCount, language: $language, topics: $topics, license: $license, defaultBranch: $defaultBranch, createdAt: $createdAt, updatedAt: $updatedAt, pushedAt: $pushedAt)';
   }
 
   @override
@@ -471,6 +489,8 @@ class _$RepositoryImpl implements _Repository {
                 other.language == language) &&
             const DeepCollectionEquality().equals(other._topics, _topics) &&
             (identical(other.license, license) || other.license == license) &&
+            (identical(other.defaultBranch, defaultBranch) ||
+                other.defaultBranch == defaultBranch) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.updatedAt, updatedAt) ||
@@ -497,6 +517,7 @@ class _$RepositoryImpl implements _Repository {
     language,
     const DeepCollectionEquality().hash(_topics),
     license,
+    defaultBranch,
     createdAt,
     updatedAt,
     pushedAt,
@@ -532,6 +553,7 @@ abstract class _Repository implements Repository {
     final String? language,
     final List<String>? topics,
     final RepoLicense? license,
+    @JsonKey(name: 'default_branch') final String? defaultBranch,
     @JsonKey(name: 'created_at') final DateTime? createdAt,
     @JsonKey(name: 'updated_at') final DateTime? updatedAt,
     @JsonKey(name: 'pushed_at') final DateTime? pushedAt,
@@ -573,6 +595,9 @@ abstract class _Repository implements Repository {
   List<String>? get topics;
   @override
   RepoLicense? get license;
+  @override
+  @JsonKey(name: 'default_branch')
+  String? get defaultBranch;
   @override
   @JsonKey(name: 'created_at')
   DateTime? get createdAt;

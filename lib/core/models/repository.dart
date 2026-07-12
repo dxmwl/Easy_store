@@ -20,6 +20,7 @@ class Repository with _$Repository {
     String? language,
     List<String>? topics,
     RepoLicense? license,
+    @JsonKey(name: 'default_branch') String? defaultBranch,
     @JsonKey(name: 'created_at') DateTime? createdAt,
     @JsonKey(name: 'updated_at') DateTime? updatedAt,
     @JsonKey(name: 'pushed_at') DateTime? pushedAt,
