@@ -1,0 +1,14 @@
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../../core/api/github_api.dart';
+import '../../../core/models/repository.dart';
+import '../../../core/models/release.dart';
+
+final repositoryProvider = FutureProvider.family<Repository, ({String owner, String repo})>((ref, params) async {
+  final api = ref.watch(githubApiProvider);
+  return api.getRepository(params.owner, params.repo);
+});
+
+final releasesProvider = FutureProvider.family<List<Release>, ({String owner, String repo})>((ref, params) async {
+  final api = ref.watch(githubApiProvider);
+  return api.getReleases(params.owner, params.repo);
+});
