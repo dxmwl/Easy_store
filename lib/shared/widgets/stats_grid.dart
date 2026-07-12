@@ -8,6 +8,7 @@ class StatsGrid extends StatelessWidget {
   final int? issues;
   final int? downloads;
   final String? license;
+  final VoidCallback? onIssuesTap;
 
   const StatsGrid({
     super.key,
@@ -16,6 +17,7 @@ class StatsGrid extends StatelessWidget {
     this.issues,
     this.downloads,
     this.license,
+    this.onIssuesTap,
   });
 
   @override
@@ -47,6 +49,7 @@ class StatsGrid extends StatelessWidget {
                 label: 'ISSUES',
                 value: issues != null ? _formatNumber(issues!) : '-',
                 icon: Icons.error_outline,
+                onTap: onIssuesTap,
               ),
             ),
           ],
@@ -81,45 +84,49 @@ class StatsGrid extends StatelessWidget {
     required String value,
     required IconData icon,
     Color? valueColor,
+    VoidCallback? onTap,
   }) {
-    return Container(
-      padding: const EdgeInsets.all(12),
-      decoration: BoxDecoration(
-        color: BrutalTheme.white,
-        border: Border.all(color: Colors.black, width: 2.5),
-        boxShadow: const [
-          BoxShadow(
-            color: Colors.black,
-            offset: Offset(4, 4),
-            blurRadius: 0,
-          ),
-        ],
-      ),
-      child: Column(
-        children: [
-          Icon(icon, size: 16, color: BrutalTheme.ink),
-          const SizedBox(height: 4),
-          Text(
-            value,
-            style: TextStyle(
-              fontFamily: 'Arial Black',
-              fontSize: 18,
-              fontWeight: FontWeight.w900,
-              color: valueColor ?? BrutalTheme.ink,
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: const EdgeInsets.all(12),
+        decoration: BoxDecoration(
+          color: BrutalTheme.white,
+          border: Border.all(color: Colors.black, width: 2.5),
+          boxShadow: const [
+            BoxShadow(
+              color: Colors.black,
+              offset: Offset(4, 4),
+              blurRadius: 0,
             ),
-          ),
-          const SizedBox(height: 2),
-          Text(
-            label,
-            style: const TextStyle(
-              fontFamily: 'Arial',
-              fontSize: 8,
-              fontWeight: FontWeight.w700,
-              color: BrutalTheme.disabled,
-              letterSpacing: 0.5,
+          ],
+        ),
+        child: Column(
+          children: [
+            Icon(icon, size: 16, color: BrutalTheme.ink),
+            const SizedBox(height: 4),
+            Text(
+              value,
+              style: TextStyle(
+                fontFamily: 'Arial Black',
+                fontSize: 18,
+                fontWeight: FontWeight.w900,
+                color: valueColor ?? BrutalTheme.ink,
+              ),
             ),
-          ),
-        ],
+            const SizedBox(height: 2),
+            Text(
+              label,
+              style: TextStyle(
+                fontFamily: 'Arial',
+                fontSize: 8,
+                fontWeight: FontWeight.w700,
+                color: onTap != null ? BrutalTheme.primary : BrutalTheme.disabled,
+                letterSpacing: 0.5,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

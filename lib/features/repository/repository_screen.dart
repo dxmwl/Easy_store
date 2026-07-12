@@ -128,6 +128,7 @@ class _RepositoryScreenState extends ConsumerState<RepositoryScreen> {
                 issues: repo.openIssuesCount,
                 downloads: totalDownloads,
                 license: repo.license?.name,
+                onIssuesTap: _navigateToIssues,
               );
             },
             loading: () => StatsGrid(
@@ -136,6 +137,7 @@ class _RepositoryScreenState extends ConsumerState<RepositoryScreen> {
               issues: repo.openIssuesCount,
               downloads: null,
               license: repo.license?.name,
+              onIssuesTap: _navigateToIssues,
             ),
             error: (_, __) => StatsGrid(
               forks: repo.forksCount,
@@ -143,6 +145,7 @@ class _RepositoryScreenState extends ConsumerState<RepositoryScreen> {
               issues: repo.openIssuesCount,
               downloads: null,
               license: repo.license?.name,
+              onIssuesTap: _navigateToIssues,
             ),
           ),
           const SizedBox(height: 24),
@@ -166,6 +169,17 @@ class _RepositoryScreenState extends ConsumerState<RepositoryScreen> {
       }
     }
     return total;
+  }
+
+  void _navigateToIssues() {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => IssuesScreen(
+          owner: widget.owner,
+          repo: widget.repo,
+        ),
+      ),
+    );
   }
 
   Widget _buildActionArea(AsyncValue<List<Release>> releasesAsync, AppLocalizations l10n) {
