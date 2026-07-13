@@ -43,7 +43,7 @@
 
 ## 技术栈
 
-- **框架**：Flutter 3.29+
+- **框架**：Flutter 3.29+ 
 - **状态管理**：Riverpod
 - **网络请求**：Dio
 - **UI 风格**：Manga/Neo-Brutalism（新粗野主义 + 漫画美学）
