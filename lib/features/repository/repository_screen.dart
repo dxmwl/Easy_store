@@ -10,6 +10,7 @@ import '../../shared/widgets/manga_container.dart';
 import '../../shared/widgets/repo_header_card.dart';
 import '../../shared/widgets/stats_grid.dart';
 import '../../core/models/repository.dart';
+import '../downloads/providers/download_providers.dart';
 import 'changelog_screen.dart';
 import '../../core/models/release.dart';
 import 'providers/repository_providers.dart';
@@ -692,12 +693,32 @@ class _RepositoryScreenState extends ConsumerState<RepositoryScreen> {
   }
 
   void _downloadAsset() async {
-    if (_selectedAsset?.browserDownloadUrl != null) {
-      final url = Uri.parse(_selectedAsset!.browserDownloadUrl!);
-      if (await canLaunchUrl(url)) {
-        await launchUrl(url);
-      }
+    if (_selectedAsset?.browserDownloadUrl == null) return;
+    
+    final url = _selectedAsset!.browserDownloadUrl!;
+    final fileName = _selectedAsset!.name;
+    
+    // 显示下载开始提示
+    if (mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            'Downloading $fileName...',
+            style: const TextStyle(fontFamily: 'Arial Black'),
+          ),
+          backgroundColor: BrutalTheme.ink,
+          behavior: SnackBarBehavior.floating,
+        ),
+      );
     }
+    
+    // 使用 download provider 执行下载
+    ref.read(downloadNotifierProvider.notifier).startDownload(
+      url: url,
+      fileName: fileName,
+      repoName: widget.repo,
+      repoOwner: widget.owner,
+    );
   }
 
   Widget _buildFeatureButtons(AppLocalizations l10n) {
@@ -926,19 +947,14 @@ class _RepositoryScreenState extends ConsumerState<RepositoryScreen> {
                   ),
                 );
               }
-              return ConstrainedBox(
-                constraints: const BoxConstraints(maxHeight: 600),
-                child: Container(
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    color: BrutalTheme.white,
-                    border: Border.all(color: BrutalTheme.ink, width: 2),
-                  ),
-                  child: SingleChildScrollView(
-                    padding: const EdgeInsets.all(16),
-                    child: _buildReadmeMarkdown(readme, repo.defaultBranch ?? 'main'),
-                  ),
+              return Container(
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: BrutalTheme.white,
+                  border: Border.all(color: BrutalTheme.ink, width: 2),
                 ),
+                padding: const EdgeInsets.all(16),
+                child: _buildReadmeMarkdown(readme, repo.defaultBranch ?? 'main'),
               );
             },
             loading: () => const Center(
