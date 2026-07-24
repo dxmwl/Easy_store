@@ -233,7 +233,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get noClosedIssues => 'クローズドイシューなし';
 
   @override
-  String get open => 'オープン';
+  String get open => '開く';
 
   @override
   String get closed => 'クローズド';
@@ -252,4 +252,58 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get readMoreBtn => '続きを読む';
+
+  @override
+  String get leaderboard => 'ランキング';
+
+  @override
+  String get trendingTab => 'トレンド';
+
+  @override
+  String get newReleaseTab => '新着';
+
+  @override
+  String get popularTab => '人気';
+
+  @override
+  String get asset => 'アセット';
+
+  @override
+  String get location => '場所';
+
+  @override
+  String get downloadLocation => 'ダウンロード場所';
+
+  @override
+  String get change => '変更';
+
+  @override
+  String get clear => 'クリア';
+
+  @override
+  String get completed => '完了';
+
+  @override
+  String get developer => '開発者';
+
+  @override
+  String get repos => 'リポジトリ';
+
+  @override
+  String get followers => 'フォロワー';
+
+  @override
+  String get following => 'フォロー中';
+
+  @override
+  String get repositories => 'リポジトリ一覧';
+
+  @override
+  String get noPublicRepos => '公開リポジトリなし';
+
+  @override
+  String get aboutApp => '概要';
+
+  @override
+  String get readmeMarkdown => 'README ドキュメント';
 }

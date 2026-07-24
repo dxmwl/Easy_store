@@ -8,6 +8,7 @@ import '../../shared/widgets/platform_selector_sheet.dart';
 import '../../shared/widgets/manga_tab_bar.dart';
 import '../../features/search/search_screen.dart';
 import '../../features/repository/repository_screen.dart';
+import '../../features/downloads/downloads_screen.dart';
 import '../../core/models/repository.dart';
 import '../../core/utils/platform_detector.dart';
 import 'providers/home_providers.dart';
@@ -121,6 +122,23 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                           const Icon(Icons.arrow_drop_down, size: 18, color: BrutalTheme.white),
                         ],
                       ),
+                    ),
+                  ),
+                  const SizedBox(width: 8),
+                  // 下载按钮
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => const DownloadsScreen()),
+                      );
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                        color: BrutalTheme.white,
+                        border: Border.all(color: BrutalTheme.ink, width: 2),
+                      ),
+                      child: const Icon(Icons.download, size: 20),
                     ),
                   ),
                   const SizedBox(width: 8),

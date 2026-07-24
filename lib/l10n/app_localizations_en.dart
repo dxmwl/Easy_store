@@ -36,7 +36,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get searchRepos => 'Search repositories...';
 
   @override
-  String get cancel => 'Cancel';
+  String get cancel => 'CANCEL';
 
   @override
   String get noData => 'No Data';
@@ -72,7 +72,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get about => 'About';
 
   @override
-  String get version => 'Version';
+  String get version => 'VERSION';
 
   @override
   String get platform => 'Platform';
@@ -253,4 +253,58 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get readMoreBtn => 'READ MORE';
+
+  @override
+  String get leaderboard => 'Leaderboard';
+
+  @override
+  String get trendingTab => 'TRENDING';
+
+  @override
+  String get newReleaseTab => 'NEW RELEASE';
+
+  @override
+  String get popularTab => 'POPULAR';
+
+  @override
+  String get asset => 'ASSET';
+
+  @override
+  String get location => 'LOCATION';
+
+  @override
+  String get downloadLocation => 'DOWNLOAD LOCATION';
+
+  @override
+  String get change => 'CHANGE';
+
+  @override
+  String get clear => 'CLEAR';
+
+  @override
+  String get completed => 'COMPLETED';
+
+  @override
+  String get developer => 'DEVELOPER';
+
+  @override
+  String get repos => 'REPOS';
+
+  @override
+  String get followers => 'FOLLOWERS';
+
+  @override
+  String get following => 'FOLLOWING';
+
+  @override
+  String get repositories => 'REPOSITORIES';
+
+  @override
+  String get noPublicRepos => 'NO PUBLIC REPOSITORIES';
+
+  @override
+  String get aboutApp => 'ABOUT';
+
+  @override
+  String get readmeMarkdown => 'README MARKDOWN';
 }

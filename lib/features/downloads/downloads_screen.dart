@@ -49,6 +49,19 @@ class _DownloadsScreenState extends ConsumerState<DownloadsScreen> {
       ),
       child: Row(
         children: [
+          // 返回按钮
+          GestureDetector(
+            onTap: () => Navigator.of(context).pop(),
+            child: Container(
+              padding: const EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                color: BrutalTheme.white,
+                border: Border.all(color: BrutalTheme.ink, width: 2),
+              ),
+              child: const Icon(Icons.arrow_back, size: 20),
+            ),
+          ),
+          const SizedBox(width: 12),
           const Icon(Icons.download, size: 24),
           const SizedBox(width: 8),
           Text(

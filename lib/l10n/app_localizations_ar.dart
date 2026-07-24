@@ -234,7 +234,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get noClosedIssues => 'لا توجد مشاكل مغلقة';
 
   @override
-  String get open => 'مفتوح';
+  String get open => 'فتح';
 
   @override
   String get closed => 'مغلق';
@@ -253,4 +253,58 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get readMoreBtn => 'اقرأ المزيد';
+
+  @override
+  String get leaderboard => 'لوحة المتصدرين';
+
+  @override
+  String get trendingTab => 'الرائج';
+
+  @override
+  String get newReleaseTab => 'إصدار جديد';
+
+  @override
+  String get popularTab => 'الشائع';
+
+  @override
+  String get asset => 'الملف';
+
+  @override
+  String get location => 'الموقع';
+
+  @override
+  String get downloadLocation => 'موقع التنزيل';
+
+  @override
+  String get change => 'تغيير';
+
+  @override
+  String get clear => 'مسح';
+
+  @override
+  String get completed => 'مكتمل';
+
+  @override
+  String get developer => 'المطور';
+
+  @override
+  String get repos => 'المستودعات';
+
+  @override
+  String get followers => 'المتابعون';
+
+  @override
+  String get following => 'يتابع';
+
+  @override
+  String get repositories => 'المستودعات';
+
+  @override
+  String get noPublicRepos => 'لا توجد مستودعات عامة';
+
+  @override
+  String get aboutApp => 'حول';
+
+  @override
+  String get readmeMarkdown => 'README Markdown';
 }

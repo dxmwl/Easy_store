@@ -36,7 +36,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get searchRepos => 'Depo ara...';
 
   @override
-  String get cancel => 'İptal';
+  String get cancel => 'İPTAL';
 
   @override
   String get noData => 'Veri Yok';
@@ -72,7 +72,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get about => 'Hakkında';
 
   @override
-  String get version => 'Sürüm';
+  String get version => 'SÜRÜM';
 
   @override
   String get platform => 'Platform';
@@ -234,7 +234,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get noClosedIssues => 'KAPALI SORUN YOK';
 
   @override
-  String get open => 'AÇIK';
+  String get open => 'AÇ';
 
   @override
   String get closed => 'KAPALI';
@@ -253,4 +253,58 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get readMoreBtn => 'DAHA FAZLA OKU';
+
+  @override
+  String get leaderboard => 'SIRALAMA';
+
+  @override
+  String get trendingTab => 'TREND';
+
+  @override
+  String get newReleaseTab => 'YENİ';
+
+  @override
+  String get popularTab => 'POPÜLER';
+
+  @override
+  String get asset => 'DOSYA';
+
+  @override
+  String get location => 'KONUM';
+
+  @override
+  String get downloadLocation => 'İNDİRME KONUMU';
+
+  @override
+  String get change => 'DEĞİŞTİR';
+
+  @override
+  String get clear => 'TEMİZLE';
+
+  @override
+  String get completed => 'TAMAMLANDI';
+
+  @override
+  String get developer => 'GELİŞTİRİCİ';
+
+  @override
+  String get repos => 'DEPOLAR';
+
+  @override
+  String get followers => 'TAKİPÇİLER';
+
+  @override
+  String get following => 'TAKİP EDİLENLER';
+
+  @override
+  String get repositories => 'DEPOLAR';
+
+  @override
+  String get noPublicRepos => 'HERHANGİ BİR PUBLIC REPO YOK';
+
+  @override
+  String get aboutApp => 'HAKKINDA';
+
+  @override
+  String get readmeMarkdown => 'README DÖKÜMANI';
 }

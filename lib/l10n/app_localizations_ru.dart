@@ -36,7 +36,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get searchRepos => 'Поиск репозиториев...';
 
   @override
-  String get cancel => 'Отмена';
+  String get cancel => 'ОТМЕНА';
 
   @override
   String get noData => 'Нет Данных';
@@ -72,7 +72,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get about => 'О Приложении';
 
   @override
-  String get version => 'Версия';
+  String get version => 'ВЕРСИЯ';
 
   @override
   String get platform => 'Платформа';
@@ -234,7 +234,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get noClosedIssues => 'НЕТ ЗАКРЫТЫХ ПРОБЛЕМ';
 
   @override
-  String get open => 'ОТКРЫТА';
+  String get open => 'ОТКРЫТЬ';
 
   @override
   String get closed => 'ЗАКРЫТА';
@@ -253,4 +253,58 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get readMoreBtn => 'ПОДРОБНЕЕ';
+
+  @override
+  String get leaderboard => 'ТАБЛИЦА ЛИДЕРОВ';
+
+  @override
+  String get trendingTab => 'ТРЕНДЫ';
+
+  @override
+  String get newReleaseTab => 'НОВОЕ';
+
+  @override
+  String get popularTab => 'ПОПУЛЯРНОЕ';
+
+  @override
+  String get asset => 'РЕСУРС';
+
+  @override
+  String get location => 'МЕСТО';
+
+  @override
+  String get downloadLocation => 'МЕСТО ЗАГРУЗКИ';
+
+  @override
+  String get change => 'ИЗМЕНИТЬ';
+
+  @override
+  String get clear => 'ОЧИСТИТЬ';
+
+  @override
+  String get completed => 'ЗАВЕРШЕНО';
+
+  @override
+  String get developer => 'РАЗРАБОТЧИК';
+
+  @override
+  String get repos => 'РЕПОЗИТОРИИ';
+
+  @override
+  String get followers => 'ПОДПИСЧИКИ';
+
+  @override
+  String get following => 'ПОДПИСКИ';
+
+  @override
+  String get repositories => 'РЕПОЗИТОРИИ';
+
+  @override
+  String get noPublicRepos => 'НЕТ ПУБЛИЧНЫХ РЕПОЗИТОРИЕВ';
+
+  @override
+  String get aboutApp => 'О ПРИЛОЖЕНИИ';
+
+  @override
+  String get readmeMarkdown => 'ДОКУМЕНТАЦИЯ README';
 }

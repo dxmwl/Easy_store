@@ -36,7 +36,7 @@ class AppLocalizationsIt extends AppLocalizations {
   String get searchRepos => 'Cerca repository...';
 
   @override
-  String get cancel => 'Annulla';
+  String get cancel => 'ANNULLA';
 
   @override
   String get noData => 'Nessun Dato';
@@ -73,7 +73,7 @@ class AppLocalizationsIt extends AppLocalizations {
   String get about => 'Informazioni';
 
   @override
-  String get version => 'Versione';
+  String get version => 'VERSIONE';
 
   @override
   String get platform => 'Piattaforma';
@@ -235,7 +235,7 @@ class AppLocalizationsIt extends AppLocalizations {
   String get noClosedIssues => 'NESSUN ISSUE CHIUSO';
 
   @override
-  String get open => 'APERTO';
+  String get open => 'APRI';
 
   @override
   String get closed => 'CHIUSO';
@@ -254,4 +254,58 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get readMoreBtn => 'LEGGI DI PIÙ';
+
+  @override
+  String get leaderboard => 'CLASSIFICA';
+
+  @override
+  String get trendingTab => 'TENDENZA';
+
+  @override
+  String get newReleaseTab => 'NUOVO';
+
+  @override
+  String get popularTab => 'POPOLARE';
+
+  @override
+  String get asset => 'ASSET';
+
+  @override
+  String get location => 'POSIZIONE';
+
+  @override
+  String get downloadLocation => 'POSIZIONE DI DOWNLOAD';
+
+  @override
+  String get change => 'CAMBIA';
+
+  @override
+  String get clear => 'PULISCI';
+
+  @override
+  String get completed => 'COMPLETATO';
+
+  @override
+  String get developer => 'SVILUPPATORE';
+
+  @override
+  String get repos => 'REPOSITORY';
+
+  @override
+  String get followers => 'FOLLOWER';
+
+  @override
+  String get following => 'SEGUITI';
+
+  @override
+  String get repositories => 'REPOSITORY';
+
+  @override
+  String get noPublicRepos => 'NESSUN REPOSITORY PUBBLICO';
+
+  @override
+  String get aboutApp => 'INFORMAZIONI';
+
+  @override
+  String get readmeMarkdown => 'README MARKDOWN';
 }

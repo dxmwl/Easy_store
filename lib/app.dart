@@ -7,7 +7,7 @@ import 'config/brutal_theme.dart';
 import 'core/services/storage_service.dart';
 import 'core/api/github_api.dart';
 import 'features/home/home_screen.dart';
-import 'features/downloads/downloads_screen.dart';
+import 'features/leaderboard/leaderboard_screen.dart';
 import 'features/library/library_screen.dart';
 import 'features/profile/profile_screen.dart';
 import 'shared/widgets/brutal_nav_bar.dart';
@@ -42,7 +42,7 @@ class _EasyStoreAppState extends ConsumerState<EasyStoreApp> {
       case 0:
         return const HomeScreen();
       case 1:
-        return const DownloadsScreen();
+        return const LeaderboardScreen();
       case 2:
         return const LibraryScreen();
       case 3:
@@ -97,7 +97,7 @@ class _EasyStoreAppState extends ConsumerState<EasyStoreApp> {
               },
               items: [
                 BrutalNavItem(icon: Icons.home, label: l10n.discover),
-                BrutalNavItem(icon: Icons.download, label: l10n.downloads),
+                BrutalNavItem(icon: Icons.leaderboard, label: l10n.leaderboard),
                 BrutalNavItem(icon: Icons.book, label: l10n.library),
                 BrutalNavItem(icon: Icons.person, label: l10n.profile),
               ],

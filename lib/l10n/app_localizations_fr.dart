@@ -36,7 +36,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get searchRepos => 'Rechercher des dépôts...';
 
   @override
-  String get cancel => 'Annuler';
+  String get cancel => 'ANNULER';
 
   @override
   String get noData => 'Aucune Donnée';
@@ -73,7 +73,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get about => 'À Propos';
 
   @override
-  String get version => 'Version';
+  String get version => 'VERSION';
 
   @override
   String get platform => 'Plateforme';
@@ -235,7 +235,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get noClosedIssues => 'AUCUN TICKET FERMÉ';
 
   @override
-  String get open => 'OUVERT';
+  String get open => 'OUVRIR';
 
   @override
   String get closed => 'FERMÉ';
@@ -254,4 +254,58 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get readMoreBtn => 'EN SAVOIR PLUS';
+
+  @override
+  String get leaderboard => 'CLASSEMENT';
+
+  @override
+  String get trendingTab => 'TENDANCE';
+
+  @override
+  String get newReleaseTab => 'NOUVEAU';
+
+  @override
+  String get popularTab => 'POPULAIRE';
+
+  @override
+  String get asset => 'ASSET';
+
+  @override
+  String get location => 'EMPLACEMENT';
+
+  @override
+  String get downloadLocation => 'EMPLACEMENT DE TÉLÉCHARGEMENT';
+
+  @override
+  String get change => 'CHANGER';
+
+  @override
+  String get clear => 'EFFACER';
+
+  @override
+  String get completed => 'TERMINÉ';
+
+  @override
+  String get developer => 'DÉVELOPPEUR';
+
+  @override
+  String get repos => 'DÉPÔTS';
+
+  @override
+  String get followers => 'ABONNÉS';
+
+  @override
+  String get following => 'ABONNEMENTS';
+
+  @override
+  String get repositories => 'DÉPÔTS';
+
+  @override
+  String get noPublicRepos => 'AUCUN DÉPÔT PUBLIC';
+
+  @override
+  String get aboutApp => 'À PROPOS';
+
+  @override
+  String get readmeMarkdown => 'README MARKDOWN';
 }

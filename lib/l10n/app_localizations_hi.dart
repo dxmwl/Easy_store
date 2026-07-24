@@ -235,7 +235,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get noClosedIssues => 'कोई बंद मुद्दे नहीं';
 
   @override
-  String get open => 'खुला';
+  String get open => 'खोलें';
 
   @override
   String get closed => 'बंद';
@@ -254,4 +254,58 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get readMoreBtn => 'और पढ़ें';
+
+  @override
+  String get leaderboard => 'लीडरबोर्ड';
+
+  @override
+  String get trendingTab => 'ट्रेंडिंग';
+
+  @override
+  String get newReleaseTab => 'नया';
+
+  @override
+  String get popularTab => 'लोकप्रिय';
+
+  @override
+  String get asset => 'संपत्ति';
+
+  @override
+  String get location => 'स्थान';
+
+  @override
+  String get downloadLocation => 'डाउनलोड स्थान';
+
+  @override
+  String get change => 'बदलें';
+
+  @override
+  String get clear => 'साफ़ करें';
+
+  @override
+  String get completed => 'पूर्ण';
+
+  @override
+  String get developer => 'डेवलपर';
+
+  @override
+  String get repos => 'रिपो';
+
+  @override
+  String get followers => 'फ़ॉलोअर्स';
+
+  @override
+  String get following => 'फ़ॉलो कर रहे हैं';
+
+  @override
+  String get repositories => 'रिपोज़िटरी';
+
+  @override
+  String get noPublicRepos => 'कोई सार्वजनिक रिपो नहीं';
+
+  @override
+  String get aboutApp => 'के बारे में';
+
+  @override
+  String get readmeMarkdown => 'README दस्तावेज़';
 }

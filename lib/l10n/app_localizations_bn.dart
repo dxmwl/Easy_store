@@ -235,7 +235,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get noClosedIssues => 'কোনো বন্ধ সমস্যা নেই';
 
   @override
-  String get open => 'খোলা';
+  String get open => 'খুলুন';
 
   @override
   String get closed => 'বন্ধ';
@@ -254,4 +254,58 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get readMoreBtn => 'আরো পড়ুন';
+
+  @override
+  String get leaderboard => 'লিডারবোর্ড';
+
+  @override
+  String get trendingTab => 'ট্রেন্ডিং';
+
+  @override
+  String get newReleaseTab => 'নতুন';
+
+  @override
+  String get popularTab => 'জনপ্রিয়';
+
+  @override
+  String get asset => 'সম্পদ';
+
+  @override
+  String get location => 'অবস্থান';
+
+  @override
+  String get downloadLocation => 'ডাউনলোড অবস্থান';
+
+  @override
+  String get change => 'পরিবর্তন';
+
+  @override
+  String get clear => 'পরিষ্কার';
+
+  @override
+  String get completed => 'সম্পন্ন';
+
+  @override
+  String get developer => 'ডেভেলপার';
+
+  @override
+  String get repos => 'রিপো';
+
+  @override
+  String get followers => 'অনুসারী';
+
+  @override
+  String get following => 'অনুসরণ করছেন';
+
+  @override
+  String get repositories => 'রিপোজিটরি';
+
+  @override
+  String get noPublicRepos => 'কোনো পাবলিক রিপো নেই';
+
+  @override
+  String get aboutApp => 'সম্পর্কে';
+
+  @override
+  String get readmeMarkdown => 'README ডকুমেন্ট';
 }

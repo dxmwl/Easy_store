@@ -233,7 +233,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get noClosedIssues => '无已关闭问题';
 
   @override
-  String get open => '开放';
+  String get open => '打开';
 
   @override
   String get closed => '已关闭';
@@ -252,4 +252,58 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get readMoreBtn => '阅读更多';
+
+  @override
+  String get leaderboard => '排行榜';
+
+  @override
+  String get trendingTab => '趋势';
+
+  @override
+  String get newReleaseTab => '新发布';
+
+  @override
+  String get popularTab => '热门';
+
+  @override
+  String get asset => '资源';
+
+  @override
+  String get location => '位置';
+
+  @override
+  String get downloadLocation => '下载位置';
+
+  @override
+  String get change => '更改';
+
+  @override
+  String get clear => '清空';
+
+  @override
+  String get completed => '已完成';
+
+  @override
+  String get developer => '开发者';
+
+  @override
+  String get repos => '仓库';
+
+  @override
+  String get followers => '粉丝';
+
+  @override
+  String get following => '关注';
+
+  @override
+  String get repositories => '仓库列表';
+
+  @override
+  String get noPublicRepos => '暂无公开仓库';
+
+  @override
+  String get aboutApp => '关于';
+
+  @override
+  String get readmeMarkdown => 'README 文档';
 }

@@ -177,7 +177,7 @@ abstract class AppLocalizations {
   /// No description provided for @cancel.
   ///
   /// In en, this message translates to:
-  /// **'Cancel'**
+  /// **'CANCEL'**
   String get cancel;
 
   /// No description provided for @noData.
@@ -249,7 +249,7 @@ abstract class AppLocalizations {
   /// No description provided for @version.
   ///
   /// In en, this message translates to:
-  /// **'Version'**
+  /// **'VERSION'**
   String get version;
 
   /// No description provided for @platform.
@@ -605,6 +605,114 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'READ MORE'**
   String get readMoreBtn;
+
+  /// No description provided for @leaderboard.
+  ///
+  /// In en, this message translates to:
+  /// **'Leaderboard'**
+  String get leaderboard;
+
+  /// No description provided for @trendingTab.
+  ///
+  /// In en, this message translates to:
+  /// **'TRENDING'**
+  String get trendingTab;
+
+  /// No description provided for @newReleaseTab.
+  ///
+  /// In en, this message translates to:
+  /// **'NEW RELEASE'**
+  String get newReleaseTab;
+
+  /// No description provided for @popularTab.
+  ///
+  /// In en, this message translates to:
+  /// **'POPULAR'**
+  String get popularTab;
+
+  /// No description provided for @asset.
+  ///
+  /// In en, this message translates to:
+  /// **'ASSET'**
+  String get asset;
+
+  /// No description provided for @location.
+  ///
+  /// In en, this message translates to:
+  /// **'LOCATION'**
+  String get location;
+
+  /// No description provided for @downloadLocation.
+  ///
+  /// In en, this message translates to:
+  /// **'DOWNLOAD LOCATION'**
+  String get downloadLocation;
+
+  /// No description provided for @change.
+  ///
+  /// In en, this message translates to:
+  /// **'CHANGE'**
+  String get change;
+
+  /// No description provided for @clear.
+  ///
+  /// In en, this message translates to:
+  /// **'CLEAR'**
+  String get clear;
+
+  /// No description provided for @completed.
+  ///
+  /// In en, this message translates to:
+  /// **'COMPLETED'**
+  String get completed;
+
+  /// No description provided for @developer.
+  ///
+  /// In en, this message translates to:
+  /// **'DEVELOPER'**
+  String get developer;
+
+  /// No description provided for @repos.
+  ///
+  /// In en, this message translates to:
+  /// **'REPOS'**
+  String get repos;
+
+  /// No description provided for @followers.
+  ///
+  /// In en, this message translates to:
+  /// **'FOLLOWERS'**
+  String get followers;
+
+  /// No description provided for @following.
+  ///
+  /// In en, this message translates to:
+  /// **'FOLLOWING'**
+  String get following;
+
+  /// No description provided for @repositories.
+  ///
+  /// In en, this message translates to:
+  /// **'REPOSITORIES'**
+  String get repositories;
+
+  /// No description provided for @noPublicRepos.
+  ///
+  /// In en, this message translates to:
+  /// **'NO PUBLIC REPOSITORIES'**
+  String get noPublicRepos;
+
+  /// No description provided for @aboutApp.
+  ///
+  /// In en, this message translates to:
+  /// **'ABOUT'**
+  String get aboutApp;
+
+  /// No description provided for @readmeMarkdown.
+  ///
+  /// In en, this message translates to:
+  /// **'README MARKDOWN'**
+  String get readmeMarkdown;
 }
 
 class _AppLocalizationsDelegate

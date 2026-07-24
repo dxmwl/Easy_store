@@ -233,7 +233,7 @@ class AppLocalizationsKo extends AppLocalizations {
   String get noClosedIssues => '닫힌 이슈 없음';
 
   @override
-  String get open => '열림';
+  String get open => '열기';
 
   @override
   String get closed => '닫힘';
@@ -252,4 +252,58 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get readMoreBtn => '더보기';
+
+  @override
+  String get leaderboard => '랭킹';
+
+  @override
+  String get trendingTab => '인기';
+
+  @override
+  String get newReleaseTab => '신규';
+
+  @override
+  String get popularTab => '핫';
+
+  @override
+  String get asset => '자산';
+
+  @override
+  String get location => '위치';
+
+  @override
+  String get downloadLocation => '다운로드 위치';
+
+  @override
+  String get change => '변경';
+
+  @override
+  String get clear => '지우기';
+
+  @override
+  String get completed => '완료';
+
+  @override
+  String get developer => '개발자';
+
+  @override
+  String get repos => '저장소';
+
+  @override
+  String get followers => '팔로워';
+
+  @override
+  String get following => '팔로잉';
+
+  @override
+  String get repositories => '저장소 목록';
+
+  @override
+  String get noPublicRepos => '공개 저장소 없음';
+
+  @override
+  String get aboutApp => '정보';
+
+  @override
+  String get readmeMarkdown => 'README 문서';
 }
